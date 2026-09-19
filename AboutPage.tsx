@@ -71,7 +71,19 @@ export function AboutPage() {
           <Reveal>
             <h2 className="text-h3 text-ink mb-10">{t('Onze geschiedenis', 'Our history')}</h2>
           </Reveal>
-          <div className="relative pl-8">
+          <div className="space-y-3 pb-24 lg:hidden">
+            {timeline.map((item) => (
+              <Reveal key={item.year}>
+                <div className="rounded-lg border border-bcn-100 bg-white p-4">
+                  <div className="mb-2 inline-flex rounded-full bg-bcn-ice px-2.5 py-1 text-xs font-bold text-bcn-deep">
+                    {item.year}
+                  </div>
+                  <p className="text-sm text-ink-muted leading-relaxed">{item.text}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+          <div className="relative hidden pl-8 lg:block">
             <div className="absolute left-4 top-2 bottom-2 w-px bg-bcn-200" />
             <div className="space-y-10">
               {timeline.map((item) => (
