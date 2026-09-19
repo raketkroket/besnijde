@@ -41,19 +41,20 @@ export function ProcessSection() {
 
         {/* Mobile vertical */}
         <div className="lg:hidden">
-          <div className="relative pl-8">
-            <div className="absolute left-4 top-2 bottom-2 w-px bg-bcn-200" />
-            <div className="space-y-8">
-              {translatedSteps.map((step) => (
-                <Reveal key={step.number}>
-                  <div className="relative">
-                    <div className="absolute -left-8 top-0.5 w-8 h-8 rounded-full bg-white border-2 border-bcn-blue flex items-center justify-center text-xs font-bold text-bcn-deep">{step.number}</div>
-                    <h3 className="font-bold text-ink mb-1">{step.title}</h3>
-                    <p className="text-sm text-ink-muted leading-relaxed">{step.description}</p>
+          <div className="space-y-3">
+            {translatedSteps.map((step) => (
+              <Reveal key={step.number}>
+                <div className="flex gap-4 rounded-lg border border-bcn-100 bg-white p-4">
+                  <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full border-2 border-bcn-blue text-xs font-bold text-bcn-deep">
+                    {step.number}
                   </div>
-                </Reveal>
-              ))}
-            </div>
+                  <div className="min-w-0 pt-0.5">
+                    <h3 className="font-bold text-ink">{step.title}</h3>
+                    <p className="mt-1 text-sm text-ink-muted leading-relaxed">{step.description}</p>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
           </div>
         </div>
       </div>

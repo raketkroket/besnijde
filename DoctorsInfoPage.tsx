@@ -51,7 +51,7 @@ export function DoctorsInfoPage() {
                     onClick={() => document.getElementById(s.id)?.scrollIntoView({ behavior: 'smooth' })}
                     className="block w-full text-left px-3 py-2.5 text-sm font-medium text-ink-muted hover:bg-bcn-ice hover:text-bcn-deep rounded-lg transition-colors"
                   >
-                    {s.label}
+                    {t(s.label, ({ 'Lokale anesthesie': 'Local anaesthesia', 'Contra-indicaties': 'Contraindications', Leeftijd: 'Age', Toestemming: 'Consent', Genezing: 'Recovery', Complicaties: 'Complications', Nazorg: 'Aftercare', Overleg: 'Consultation' } as Record<string, string>)[s.label])}
                   </button>
                 ))}
               </div>
@@ -88,42 +88,36 @@ export function DoctorsInfoPage() {
 
               <Reveal>
                 <section id="toestemming" className="scroll-mt-28">
-                  <h2 className="text-xl font-bold text-ink mb-3">Toestemming</h2>
+                  <h2 className="text-xl font-bold text-ink mb-3">{t('Toestemming', 'Consent')}</h2>
                   <p className="text-ink leading-relaxed">
-                    Bij minderjarigen is toestemming vereist van beide ouders met gezag. Bij
-                    volwassenen geldt eigen toestemming. Dit wordt vastgelegd op de
-                    behandelovereenkomst.
+                    {t('Bij minderjarigen is toestemming vereist van beide ouders met gezag. Bij volwassenen geldt eigen toestemming. Dit wordt vastgelegd op de behandelovereenkomst.', 'For minors, consent is required from both parents with legal authority. Adults provide their own consent. This is recorded in the treatment agreement.')}
                   </p>
                 </section>
               </Reveal>
 
               <Reveal>
                 <section id="genezing" className="scroll-mt-28">
-                  <h2 className="text-xl font-bold text-ink mb-3">Genezing</h2>
+                  <h2 className="text-xl font-bold text-ink mb-3">{t('Genezing', 'Recovery')}</h2>
                   <p className="text-ink leading-relaxed">
-                    Het genezingsproces verloopt bij de meeste patiënten voorspoedig. Bij
-                    volwassen mannen kan het herstel iets langer duren. Patiënten ontvangen
-                    duidelijke nazorginstructies.
+                    {t('Het genezingsproces verloopt bij de meeste patiënten voorspoedig. Bij volwassen mannen kan het herstel iets langer duren. Patiënten ontvangen duidelijke nazorginstructies.', 'Most patients recover well. Recovery may take slightly longer for adult men. Patients receive clear aftercare instructions.')}
                   </p>
                 </section>
               </Reveal>
 
               <Reveal>
                 <section id="complicaties" className="scroll-mt-28">
-                  <h2 className="text-xl font-bold text-ink mb-3">Complicaties</h2>
+                  <h2 className="text-xl font-bold text-ink mb-3">{t('Complicaties', 'Complications')}</h2>
                   <p className="text-ink leading-relaxed">
-                    BCN streft naar een zo gering mogelijk aantal complicaties. Bij complicaties
-                    of twijfels kunnen patiënten contact opnemen met de vestiging.
+                    {t('BCN streft naar een zo gering mogelijk aantal complicaties. Bij complicaties of twijfels kunnen patiënten contact opnemen met de vestiging.', 'BCN aims for as few complications as possible. Patients can contact the location with complications or concerns.')}
                   </p>
                 </section>
               </Reveal>
 
               <Reveal>
                 <section id="nazorg" className="scroll-mt-28">
-                  <h2 className="text-xl font-bold text-ink mb-3">Nazorg</h2>
+                  <h2 className="text-xl font-bold text-ink mb-3">{t('Nazorg', 'Aftercare')}</h2>
                   <p className="text-ink leading-relaxed">
-                    Na de behandeling ontvangt de patiënt duidelijke nazorginstructies. Bij
-                    vragen staat BCN klaar.
+                    {t('Na de behandeling ontvangt de patiënt duidelijke nazorginstructies. Bij vragen staat BCN klaar.', 'After treatment, the patient receives clear aftercare instructions. BCN is available for questions.')}
                   </p>
                 </section>
               </Reveal>
@@ -131,9 +125,9 @@ export function DoctorsInfoPage() {
               <Reveal>
                 <section id="overleg" className="scroll-mt-28">
                   <div className="p-8 bg-bcn-ice rounded-xl2">
-                    <h2 className="text-xl font-bold text-ink mb-3">Overleg met een BCN-arts</h2>
+                    <h2 className="text-xl font-bold text-ink mb-3">{t('Overleg met een BCN-arts', 'Consultation with a BCN doctor')}</h2>
                     <p className="text-ink leading-relaxed mb-6">
-                      Voor professioneel overleg of verwijzingen kunt u contact opnemen met BCN.
+                      {t('Voor professioneel overleg of verwijzingen kunt u contact opnemen met BCN.', 'Contact BCN for professional consultation or referrals.')}
                     </p>
                     <a href={`tel:${companyInfo.mainPhone}`} className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold rounded-lg bg-bcn-blue text-white hover:bg-bcn-deep transition-all">
                       <Phone size={16} />

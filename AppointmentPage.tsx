@@ -179,19 +179,19 @@ export function AppointmentPage() {
 
           {step === 4 && (
             <Reveal key="s4">
-              <h2 className="text-2xl font-bold text-ink mb-2">Controleren en versturen</h2>
-              <p className="text-ink-muted mb-6">Controleer uw gegevens.</p>
+              <h2 className="text-2xl font-bold text-ink mb-2">{t('Controleren en versturen', 'Review and submit')}</h2>
+              <p className="text-ink-muted mb-6">{t('Controleer uw gegevens.', 'Check your details.')}</p>
               <div className="bg-white rounded-xl2 border border-bcn-100 p-5 sm:p-6 space-y-3">
-                <div><div className="text-xs text-ink-muted uppercase">Patiënttype</div><div className="font-semibold text-ink">{patientType === 'jongen' ? 'Jongen tot 16 jaar' : 'Man vanaf 16 jaar'}</div></div>
-                <div><div className="text-xs text-ink-muted uppercase">Vestiging</div><div className="font-semibold text-ink">{location?.city}</div></div>
-                <div><div className="text-xs text-ink-muted uppercase">Datum</div><div className="font-semibold text-ink">{selectedDate}</div></div>
-                <div><div className="text-xs text-ink-muted uppercase">Kosten</div><div className="font-semibold text-ink">{patientType === 'jongen' ? '€325' : '€495'}</div></div>
-                <div><div className="text-xs text-ink-muted uppercase">Naam</div><div className="font-semibold text-ink">{formData.name || '—'}</div></div>
-                <div><div className="text-xs text-ink-muted uppercase">Contact</div><div className="font-semibold text-ink text-sm">{formData.email}</div><div className="font-semibold text-ink text-sm">{formData.phone}</div></div>
+                <div><div className="text-xs text-ink-muted uppercase">{t('Patiënttype', 'Patient type')}</div><div className="font-semibold text-ink">{patientType === 'jongen' ? t('Jongen tot 16 jaar', 'Boy up to age 16') : t('Man vanaf 16 jaar', 'Man aged 16 or over')}</div></div>
+                <div><div className="text-xs text-ink-muted uppercase">{t('Vestiging', 'Location')}</div><div className="font-semibold text-ink">{location?.city}</div></div>
+                <div><div className="text-xs text-ink-muted uppercase">{t('Datum', 'Date')}</div><div className="font-semibold text-ink">{selectedDate}</div></div>
+                <div><div className="text-xs text-ink-muted uppercase">{t('Kosten', 'Costs')}</div><div className="font-semibold text-ink">{patientType === 'jongen' ? '€325' : '€495'}</div></div>
+                <div><div className="text-xs text-ink-muted uppercase">{t('Naam', 'Name')}</div><div className="font-semibold text-ink">{formData.name || '—'}</div></div>
+                <div><div className="text-xs text-ink-muted uppercase">{t('Contact', 'Contact')}</div><div className="font-semibold text-ink text-sm">{formData.email}</div><div className="font-semibold text-ink text-sm">{formData.phone}</div></div>
               </div>
               <div className="mt-4 flex items-start gap-2.5 p-4 bg-bcn-ice rounded-lg">
                 <Info size={16} className="text-bcn-deep flex-shrink-0 mt-0.5" />
-                <p className="text-xs text-bcn-deep">Dit is een demo. Uw verzoek wordt niet verzonden of opgeslagen.</p>
+                <p className="text-xs text-bcn-deep">{t('Dit is een demo. Uw verzoek wordt niet verzonden of opgeslagen.', 'This is a demo. Your request is not sent or stored.')}</p>
               </div>
             </Reveal>
           )}
@@ -199,15 +199,15 @@ export function AppointmentPage() {
           {step === 5 && (
             <Reveal key="s5" className="text-center py-12">
               <div className="inline-flex w-16 h-16 rounded-full bg-bcn-blue items-center justify-center mb-5"><Check size={32} className="text-white" /></div>
-              <h2 className="text-2xl font-bold text-ink mb-3">Demo voltooid</h2>
-              <p className="text-ink-muted max-w-md mx-auto">In de definitieve website wordt de afspraak hier veilig verzonden en ontvangt u een bevestiging per email.</p>
+              <h2 className="text-2xl font-bold text-ink mb-3">{t('Demo voltooid', 'Demo complete')}</h2>
+              <p className="text-ink-muted max-w-md mx-auto">{t('In de definitieve website wordt de afspraak hier veilig verzonden en ontvangt u een bevestiging per email.', 'On the final website, the appointment is securely submitted here and you receive confirmation by email.')}</p>
               <div className="mt-6 bg-white rounded-xl2 border border-bcn-100 p-5 max-w-sm mx-auto text-left">
                 <div className="space-y-2 text-sm">
-                  <div className="flex justify-between"><span className="text-ink-muted">Vestiging</span><span className="font-semibold text-ink">{location?.city}</span></div>
-                  <div className="flex justify-between"><span className="text-ink-muted">Datum</span><span className="font-semibold text-ink">{selectedDate}</span></div>
+                  <div className="flex justify-between"><span className="text-ink-muted">{t('Vestiging', 'Location')}</span><span className="font-semibold text-ink">{location?.city}</span></div>
+                  <div className="flex justify-between"><span className="text-ink-muted">{t('Datum', 'Date')}</span><span className="font-semibold text-ink">{selectedDate}</span></div>
                 </div>
               </div>
-              <div className="mt-6"><LinkButton to="/" variant="secondary" withArrow>Terug naar home</LinkButton></div>
+              <div className="mt-6"><LinkButton to="/" variant="secondary" withArrow>{t('Terug naar home', 'Back to home')}</LinkButton></div>
             </Reveal>
           )}
 
