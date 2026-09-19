@@ -16,6 +16,7 @@ import { DoctorsInfoPage } from '@/pages/DoctorsInfoPage';
 import { AboutPage } from '@/pages/AboutPage';
 import { PrivacyPage } from '@/pages/PrivacyPage';
 import { ContactPage } from '@/pages/ContactPage';
+import { DownloadsPage } from '@/pages/DownloadsPage';
 import { getLocation } from '@/data/locations';
 import { LanguageProvider } from '@/language';
 
@@ -32,6 +33,7 @@ const titleMap: Record<string, string> = {
   '/reviews': 'Ervaringen — Besnijdenis Centrum Nederland',
   '/afspraak': 'Afspraak maken — Besnijdenis Centrum Nederland',
   '/contact': 'Contact — Besnijdenis Centrum Nederland',
+  '/downloads': 'Downloads — Besnijdenis Centrum Nederland',
 };
 
 function Routes() {
@@ -60,6 +62,7 @@ function Routes() {
     case '/reviews': return <ReviewsPage />;
     case '/afspraak': return <AppointmentPage />;
     case '/contact': return <ContactPage />;
+    case '/downloads': return <DownloadsPage />;
     default: return <HomePage />;
   }
 }

@@ -33,7 +33,7 @@ export const navLinks: NavLink[] = [
     children: [
       { label: 'Algemene informatie', href: '/over-bcn' },
       { label: 'Veelgestelde vragen', href: '/faq' },
-      { label: 'Downloads', href: '/informatie#downloads' },
+      { label: 'Downloads', href: '/downloads' },
       { label: 'Privacy', href: '/privacy' },
       { label: 'Klachten & geschillen', href: '/privacy#klachten' },
     ],

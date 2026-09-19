@@ -79,7 +79,7 @@ export function Footer() {
               <ul className="space-y-2">
                 <li><Link to="/over-bcn" className="text-sm text-white/70 hover:text-white">{t('Over BCN', 'About BCN')}</Link></li>
                 <li><Link to="/informatie-voor-artsen" className="text-sm text-white/70 hover:text-white">{t('Voor artsen', 'For clinicians')}</Link></li>
-                <li><Link to="/faq" className="text-sm text-white/70 hover:text-white">{t('Downloads', 'Downloads')}</Link></li>
+                <li><Link to="/downloads" className="text-sm text-white/70 hover:text-white">{t('Downloads', 'Downloads')}</Link></li>
                 <li><Link to="/privacy" className="text-sm text-white/70 hover:text-white">Privacy</Link></li>
                 <li><Link to="/contact" className="text-sm text-white/70 hover:text-white">Contact</Link></li>
               </ul>
