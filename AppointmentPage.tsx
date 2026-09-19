@@ -3,6 +3,7 @@ import { Check, Calendar, MapPin, User, FileText, ArrowLeft, Info } from 'lucide
 import { Reveal } from '@/components/Reveal';
 import { LinkButton, Button } from '@/components/Button';
 import { locations } from '@/data/locations';
+import { copy, useLanguage } from '@/language';
 
 type PatientType = 'jongen' | 'man' | null;
 type Step = 0 | 1 | 2 | 3 | 4 | 5;
@@ -16,6 +17,8 @@ const steps = [
 ];
 
 export function AppointmentPage() {
+  const { language } = useLanguage();
+  const t = (nl: string, en: string) => copy(language, nl, en);
   const [step, setStep] = useState<Step>(0);
   const [patientType, setPatientType] = useState<PatientType>(null);
   const [selectedLocation, setSelectedLocation] = useState<string | null>(null);
@@ -43,15 +46,15 @@ export function AppointmentPage() {
       <section className="pt-[72px] pb-6 lg:pt-12 lg:pb-12 bg-white">
         <div className="mx-auto max-w-3xl px-5 sm:px-6 lg:px-10 text-center">
           <Reveal>
-            <h1 className="text-[clamp(2rem,7vw,4.75rem)] font-bold text-ink leading-[1.05] tracking-tight text-balance">Afspraak maken.</h1>
-            <p className="mt-4 text-ink-muted">Vul de stappen in om een afspraakverzoek te doen.</p>
+            <h1 className="text-[clamp(2rem,7vw,4.75rem)] font-bold text-ink leading-[1.05] tracking-tight text-balance">{t('Afspraak maken.', 'Make an appointment.')}</h1>
+            <p className="mt-4 text-ink-muted">{t('Vul de stappen in om een afspraakverzoek te doen.', 'Complete the steps to request an appointment.')}</p>
           </Reveal>
           <Reveal className="mt-6">
             <div className="inline-flex items-start gap-3 px-5 py-3 bg-amber-50 border border-amber-200 rounded-lg text-left max-w-lg">
               <Info size={16} className="text-amber-600 flex-shrink-0 mt-0.5" />
               <div>
-                <div className="text-sm font-semibold text-amber-800">Demo omgeving</div>
-                <div className="text-xs text-amber-700 mt-0.5">Het online afsprakensysteem wordt bij de definitieve website veilig gekoppeld. Gegevens worden niet opgeslagen.</div>
+                <div className="text-sm font-semibold text-amber-800">{t('Demo omgeving', 'Demo environment')}</div>
+                <div className="text-xs text-amber-700 mt-0.5">{t('Het online afsprakensysteem wordt bij de definitieve website veilig gekoppeld. Gegevens worden niet opgeslagen.', 'The online appointment system will be securely connected on the final website. No data is stored.')}</div>
               </div>
             </div>
           </Reveal>
@@ -63,7 +66,7 @@ export function AppointmentPage() {
         <div className="mx-auto max-w-5xl px-5 sm:px-6 lg:px-10">
           {/* Mobile: step counter */}
           <div className="lg:hidden flex items-center gap-3">
-            <span className="text-sm font-bold text-bcn-deep">Stap {step + 1} van 5</span>
+            <span className="text-sm font-bold text-bcn-deep">{t('Stap', 'Step')} {step + 1} {t('van', 'of')} 5</span>
             <div className="flex-1 h-1.5 rounded-full bg-bcn-100 overflow-hidden">
               <div className="h-full bg-bcn-blue rounded-full transition-all duration-300" style={{ width: `${((step + 1) / 5) * 100}%` }} />
             </div>
@@ -91,17 +94,17 @@ export function AppointmentPage() {
         <div className="mx-auto max-w-2xl px-5 sm:px-6 lg:px-10">
           {step === 0 && (
             <Reveal key="s0">
-              <h2 className="text-2xl font-bold text-ink mb-2">Voor wie is de afspraak?</h2>
-              <p className="text-ink-muted mb-6">Selecteer het type patiënt.</p>
+              <h2 className="text-2xl font-bold text-ink mb-2">{t('Voor wie is de afspraak?', 'Who is the appointment for?')}</h2>
+              <p className="text-ink-muted mb-6">{t('Selecteer het type patiënt.', 'Select the patient type.')}</p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <button onClick={() => setPatientType('jongen')} className={`p-6 rounded-xl2 border-2 text-left transition-all ${patientType === 'jongen' ? 'border-bcn-blue bg-white shadow-card' : 'border-bcn-100 bg-white/50 hover:border-bcn-200'}`}>
-                  <div className="text-xs font-semibold uppercase tracking-wider text-bcn-deep mb-2">Jongen</div>
-                  <div className="text-lg font-bold text-ink">Jongen tot 16 jaar</div>
+                  <div className="text-xs font-semibold uppercase tracking-wider text-bcn-deep mb-2">{t('Jongen', 'Boy')}</div>
+                  <div className="text-lg font-bold text-ink">{t('Jongen tot 16 jaar', 'Boy up to age 16')}</div>
                   <div className="text-sm text-ink-muted mt-2">€325</div>
                 </button>
                 <button onClick={() => setPatientType('man')} className={`p-6 rounded-xl2 border-2 text-left transition-all ${patientType === 'man' ? 'border-bcn-blue bg-white shadow-card' : 'border-bcn-100 bg-white/50 hover:border-bcn-200'}`}>
-                  <div className="text-xs font-semibold uppercase tracking-wider text-bcn-deep mb-2">Man</div>
-                  <div className="text-lg font-bold text-ink">Man vanaf 16 jaar</div>
+                  <div className="text-xs font-semibold uppercase tracking-wider text-bcn-deep mb-2">{t('Man', 'Man')}</div>
+                  <div className="text-lg font-bold text-ink">{t('Man vanaf 16 jaar', 'Man aged 16 or over')}</div>
                   <div className="text-sm text-ink-muted mt-2">€495</div>
                 </button>
               </div>
@@ -110,8 +113,8 @@ export function AppointmentPage() {
 
           {step === 1 && (
             <Reveal key="s1">
-              <h2 className="text-2xl font-bold text-ink mb-2">Kies uw vestiging</h2>
-              <p className="text-ink-muted mb-6">Selecteer de locatie die het beste bij u past.</p>
+              <h2 className="text-2xl font-bold text-ink mb-2">{t('Kies uw vestiging', 'Choose your location')}</h2>
+              <p className="text-ink-muted mb-6">{t('Selecteer de locatie die het beste bij u past.', 'Select the location that suits you best.')}</p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {locations.map((loc) => (
                   <button key={loc.slug} onClick={() => setSelectedLocation(loc.slug)} className={`p-4 rounded-xl2 border-2 text-left transition-all flex items-start gap-3 ${selectedLocation === loc.slug ? 'border-bcn-blue bg-white shadow-card' : 'border-bcn-100 bg-white/50 hover:border-bcn-200'}`}>
@@ -125,8 +128,8 @@ export function AppointmentPage() {
 
           {step === 2 && (
             <Reveal key="s2">
-              <h2 className="text-2xl font-bold text-ink mb-2">Kies een beschikbare datum</h2>
-              <p className="text-ink-muted mb-6">Beschikbare data in {location?.city}.</p>
+              <h2 className="text-2xl font-bold text-ink mb-2">{t('Kies een beschikbare datum', 'Choose an available date')}</h2>
+              <p className="text-ink-muted mb-6">{t('Beschikbare data in', 'Available dates in')} {location?.city}.</p>
               <div className="space-y-2">
                 {(location?.nextDates || []).map((date) => (
                   <button key={date} onClick={() => setSelectedDate(date)} className={`w-full p-4 rounded-xl2 border-2 text-left flex items-center justify-between transition-all ${selectedDate === date ? 'border-bcn-blue bg-white shadow-card' : 'border-bcn-100 bg-white/50 hover:border-bcn-200'}`}>
@@ -140,34 +143,34 @@ export function AppointmentPage() {
 
           {step === 3 && (
             <Reveal key="s3">
-              <h2 className="text-2xl font-bold text-ink mb-2">Patiënt- en contactgegevens</h2>
-              <p className="text-ink-muted mb-6">Vul de onderstaande gegevens in.</p>
+              <h2 className="text-2xl font-bold text-ink mb-2">{t('Patiënt- en contactgegevens', 'Patient and contact details')}</h2>
+              <p className="text-ink-muted mb-6">{t('Vul de onderstaande gegevens in.', 'Enter the details below.')}</p>
               <div className="space-y-4">
                 {/* Single column on mobile, 2-col on larger */}
                 <div>
-                  <label htmlFor="name" className={labelClass}>Naam patiënt</label>
+                  <label htmlFor="name" className={labelClass}>{t('Naam patiënt', 'Patient name')}</label>
                   <input id="name" type="text" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} className={inputClass} />
                 </div>
                 <div>
-                  <label htmlFor="birthDate" className={labelClass}>Geboortedatum</label>
+                  <label htmlFor="birthDate" className={labelClass}>{t('Geboortedatum', 'Date of birth')}</label>
                   <input id="birthDate" type="date" value={formData.birthDate} onChange={(e) => setFormData({ ...formData, birthDate: e.target.value })} className={inputClass} />
                 </div>
                 {patientType === 'jongen' && (
                   <div>
-                    <label htmlFor="parentName" className={labelClass}>Naam ouder/voogd</label>
+                    <label htmlFor="parentName" className={labelClass}>{t('Naam ouder/voogd', 'Parent/guardian name')}</label>
                     <input id="parentName" type="text" value={formData.parentName} onChange={(e) => setFormData({ ...formData, parentName: e.target.value })} className={inputClass} />
                   </div>
                 )}
                 <div>
-                  <label htmlFor="email" className={labelClass}>Emailadres</label>
+                  <label htmlFor="email" className={labelClass}>{t('Emailadres', 'Email address')}</label>
                   <input id="email" type="email" inputMode="email" value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} className={inputClass} />
                 </div>
                 <div>
-                  <label htmlFor="phone" className={labelClass}>Telefoonnummer</label>
+                  <label htmlFor="phone" className={labelClass}>{t('Telefoonnummer', 'Telephone number')}</label>
                   <input id="phone" type="tel" inputMode="tel" value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })} className={inputClass} />
                 </div>
                 <div>
-                  <label htmlFor="notes" className={labelClass}>Opmerkingen (optioneel)</label>
+                  <label htmlFor="notes" className={labelClass}>{t('Opmerkingen (optioneel)', 'Notes (optional)')}</label>
                   <textarea id="notes" rows={3} value={formData.notes} onChange={(e) => setFormData({ ...formData, notes: e.target.value })} className={`${inputClass} resize-none`} />
                 </div>
               </div>
@@ -210,11 +213,11 @@ export function AppointmentPage() {
 
           {step < 5 && (
             <div className="mt-10 flex items-center justify-between gap-4">
-              {step > 0 ? <Button variant="ghost" size="md" onClick={prev}><ArrowLeft size={16} className="mr-1" />Terug</Button> : <div />}
+              {step > 0 ? <Button variant="ghost" size="md" onClick={prev}><ArrowLeft size={16} className="mr-1" />{t('Terug', 'Back')}</Button> : <div />}
               {step < 4 ? (
-                <Button size="md" onClick={next} disabled={!canProceed()} withArrow className={!canProceed() ? 'opacity-40 cursor-not-allowed' : ''}>Verder</Button>
+                <Button size="md" onClick={next} disabled={!canProceed()} withArrow className={!canProceed() ? 'opacity-40 cursor-not-allowed' : ''}>{t('Verder', 'Continue')}</Button>
               ) : (
-                <Button size="md" onClick={next} withArrow>Verzenden (demo)</Button>
+                <Button size="md" onClick={next} withArrow>{t('Verzenden (demo)', 'Submit (demo)')}</Button>
               )}
             </div>
           )}

@@ -4,8 +4,11 @@ import { Link } from '@/router';
 import { Reveal } from '@/components/Reveal';
 import { LinkButton } from '@/components/Button';
 import { faqCategories } from '@/data/faq';
+import { copy, useLanguage } from '@/language';
 
 export function FaqPage() {
+  const { language } = useLanguage();
+  const t = (nl: string, en: string) => copy(language, nl, en);
   const [activeCategory, setActiveCategory] = useState(0);
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
@@ -17,10 +20,10 @@ export function FaqPage() {
             <nav className="flex items-center gap-2 text-xs text-ink-muted mb-8">
               <Link to="/" className="hover:text-bcn-deep">Home</Link>
               <span>/</span>
-              <Link to="/faq" className="text-ink">Veelgestelde vragen</Link>
+              <Link to="/faq" className="text-ink">{t('Veelgestelde vragen', 'Frequently asked questions')}</Link>
             </nav>
-            <h1 className="text-hero text-ink text-balance">Veelgestelde vragen.</h1>
-            <p className="mt-4 text-body-lg text-ink-muted max-w-xl">Antwoorden per categorie.</p>
+            <h1 className="text-hero text-ink text-balance">{t('Veelgestelde vragen.', 'Frequently asked questions.')}</h1>
+            <p className="mt-4 text-body-lg text-ink-muted max-w-xl">{t('Antwoorden per categorie.', 'Answers by category.')}</p>
           </Reveal>
         </div>
       </section>
@@ -39,7 +42,7 @@ export function FaqPage() {
                       activeCategory === i ? 'bg-bcn-blue text-white' : 'text-ink-muted hover:bg-bcn-ice hover:text-bcn-deep'
                     }`}
                   >
-                    {cat.category}
+                    {t(cat.category, ({ Afspraak: 'Appointments', 'Voor jongens': 'For boys', 'Voor mannen': 'For men', Voorbereiding: 'Preparation', Nazorg: 'Aftercare', Kosten: 'Costs', Vestigingen: 'Locations' } as Record<string, string>)[cat.category] || cat.category)}
                   </button>
                 ))}
               </div>
@@ -75,10 +78,10 @@ export function FaqPage() {
               <Reveal className="mt-10">
                 <div className="bg-bcn-ice rounded-xl2 p-8 flex flex-col sm:flex-row items-center justify-between gap-4">
                   <div>
-                    <h3 className="font-bold text-ink">Staat uw vraag er niet bij?</h3>
-                    <p className="text-sm text-ink-muted mt-1">Neem contact met ons op.</p>
+                    <h3 className="font-bold text-ink">{t('Staat uw vraag er niet bij?', 'Is your question not listed?')}</h3>
+                    <p className="text-sm text-ink-muted mt-1">{t('Neem contact met ons op.', 'Please contact us.')}</p>
                   </div>
-                  <LinkButton to="/contact" variant="secondary" withArrow>Contact opnemen</LinkButton>
+                  <LinkButton to="/contact" variant="secondary" withArrow>{t('Contact opnemen', 'Contact us')}</LinkButton>
                 </div>
               </Reveal>
             </div>

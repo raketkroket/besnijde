@@ -3,6 +3,7 @@ import { Image } from '@/components/Image';
 import { ArrowRight } from '@/components/ArrowIcon';
 import { useRouter } from '@/router';
 import boysTreatmentImage from './images/little.png';
+import { copy, useLanguage } from '@/language';
 
 const pathways = [
   {
@@ -39,19 +40,27 @@ const pathways = [
 
 export function TreatmentPaths() {
   const { navigate } = useRouter();
+  const { language } = useLanguage();
+  const t = (nl: string, en: string) => copy(language, nl, en);
+  const translatedPaths = pathways.map((path) => ({
+    ...path,
+    title: t(path.title, ({ 'Besnijdenis voor jongens': 'Circumcision for boys', 'Besnijdenis voor mannen': 'Circumcision for men', 'Advies & correcties': 'Advice & corrections' } as Record<string, string>)[path.title]),
+    description: t(path.description, ({ 'Zorgvuldige behandeling voor jongens tot 16 jaar, onder plaatselijke verdoving.': 'Careful treatment for boys up to age 16, under local anaesthetic.', 'Professionele behandeling voor volwassen mannen, medisch of religieus.': 'Professional treatment for adult men, for medical or religious reasons.', 'Onderzoek en advies na een eerdere besnijdenis elders.': 'Assessment and advice after a circumcision performed elsewhere.' } as Record<string, string>)[path.description]),
+    priceNote: t(path.priceNote, ({ 'tot 16 jaar': 'up to age 16', 'vanaf 16 jaar': 'age 16 and over', 'voor een afspraak': 'to make an appointment' } as Record<string, string>)[path.priceNote]),
+  }));
 
   return (
     <section className="py-16 sm:py-20 lg:py-28 bg-white">
       <div className="mx-auto max-w-8xl px-5 sm:px-6 lg:px-10">
         <Reveal className="mb-10 sm:mb-12 lg:mb-16">
           <h2 className="text-[clamp(1.75rem,6vw,3.5rem)] font-bold text-ink leading-[1.1] tracking-tight text-balance">
-            Waar kunnen we u mee helpen?
+            {t('Waar kunnen we u mee helpen?', 'How can we help you?')}
           </h2>
         </Reveal>
 
         {/* Mobile: 1 column. Tablet: 2. Desktop: 3 */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          {pathways.map((p) => (
+          {translatedPaths.map((p) => (
             <Reveal key={p.number}>
               <button onClick={() => navigate(p.href)} className="group block w-full text-left">
                 <div className="relative mb-5 overflow-hidden rounded-xl2">

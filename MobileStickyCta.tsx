@@ -1,8 +1,10 @@
 import { LinkButton } from '@/components/Button';
 import { useRouter } from '@/router';
+import { copy, useLanguage } from '@/language';
 
 export function MobileStickyCta() {
   const { path } = useRouter();
+  const { language } = useLanguage();
   if (path === '/afspraak') return null;
 
   return (
@@ -12,7 +14,7 @@ export function MobileStickyCta() {
     >
       <div className="pointer-events-auto pb-3">
         <LinkButton to="/afspraak" size="lg" withArrow className="w-full shadow-card">
-          Afspraak maken
+          {copy(language, 'Afspraak maken', 'Make an appointment')}
         </LinkButton>
       </div>
     </div>

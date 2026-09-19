@@ -17,6 +17,7 @@ import { AboutPage } from '@/pages/AboutPage';
 import { PrivacyPage } from '@/pages/PrivacyPage';
 import { ContactPage } from '@/pages/ContactPage';
 import { getLocation } from '@/data/locations';
+import { LanguageProvider } from '@/language';
 
 const titleMap: Record<string, string> = {
   '/': 'Besnijdenis Centrum Nederland — Specialistische zorg sinds 2001',
@@ -65,15 +66,17 @@ function Routes() {
 
 function App() {
   return (
-    <RouterProvider>
-      <div className="min-h-screen bg-white">
-        <Navigation />
-        <main><Routes /></main>
-        <Footer />
-        <MobileStickyCta />
-        <div className="h-20 lg:hidden" />
-      </div>
-    </RouterProvider>
+    <LanguageProvider>
+      <RouterProvider>
+        <div className="min-h-screen bg-white">
+          <Navigation />
+          <main><Routes /></main>
+          <Footer />
+          <MobileStickyCta />
+          <div className="h-20 lg:hidden" />
+        </div>
+      </RouterProvider>
+    </LanguageProvider>
   );
 }
 

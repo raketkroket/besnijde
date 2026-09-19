@@ -2,6 +2,7 @@ import { Phone } from 'lucide-react';
 import { Link } from '@/router';
 import { Reveal } from '@/components/Reveal';
 import { companyInfo } from '@/data/site';
+import { copy, useLanguage } from '@/language';
 
 const sections = [
   { id: 'anesthesie', label: 'Lokale anesthesie' },
@@ -15,6 +16,8 @@ const sections = [
 ];
 
 export function DoctorsInfoPage() {
+  const { language } = useLanguage();
+  const t = (nl: string, en: string) => copy(language, nl, en);
   return (
     <>
       <section className="pt-[80px] bg-white">
@@ -23,14 +26,14 @@ export function DoctorsInfoPage() {
             <nav className="flex items-center gap-2 text-xs text-ink-muted mb-8">
               <Link to="/" className="hover:text-bcn-deep">Home</Link>
               <span>/</span>
-              <Link to="/informatie-voor-artsen" className="text-ink">Voor artsen</Link>
+              <Link to="/informatie-voor-artsen" className="text-ink">{t('Voor artsen', 'For clinicians')}</Link>
             </nav>
           </Reveal>
 
           <Reveal stagger>
-            <span className="text-xs font-semibold uppercase tracking-[0.15em] text-bcn-deep">Professioneel</span>
+            <span className="text-xs font-semibold uppercase tracking-[0.15em] text-bcn-deep">{t('Professioneel', 'Professional')}</span>
             <h1 className="mt-4 text-hero text-ink text-balance">
-              Medische informatie voor verwijzers en artsen.
+              {t('Medische informatie voor verwijzers en artsen.', 'Medical information for referrers and clinicians.')}
             </h1>
           </Reveal>
         </div>
@@ -58,32 +61,27 @@ export function DoctorsInfoPage() {
             <div className="lg:col-span-9 space-y-12">
               <Reveal>
                 <section id="anesthesie" className="scroll-mt-28">
-                  <h2 className="text-xl font-bold text-ink mb-3">Lokale anesthesie</h2>
+                  <h2 className="text-xl font-bold text-ink mb-3">{t('Lokale anesthesie', 'Local anaesthesia')}</h2>
                   <p className="text-ink leading-relaxed">
-                    Alle besnijdenissen worden uitgevoerd onder plaatselijke verdoving. De artsen
-                    van BCN streven naar een zo min mogelijk belastende ingreep door toepassing van
-                    goede verdoving en sedatie.
+                    {t('Alle besnijdenissen worden uitgevoerd onder plaatselijke verdoving. De artsen van BCN streven naar een zo min mogelijk belastende ingreep door toepassing van goede verdoving en sedatie.', 'All circumcisions are performed under local anaesthetic. BCN doctors aim to make the procedure as minimally burdensome as possible through appropriate anaesthesia and sedation.')}
                   </p>
                 </section>
               </Reveal>
 
               <Reveal>
                 <section id="contra" className="scroll-mt-28">
-                  <h2 className="text-xl font-bold text-ink mb-3">Contra-indicaties</h2>
+                  <h2 className="text-xl font-bold text-ink mb-3">{t('Contra-indicaties', 'Contraindications')}</h2>
                   <p className="text-ink leading-relaxed">
-                    Er zijn situaties waarin een besnijdenis niet direct kan worden uitgevoerd.
-                    De arts beoordeelt contra-indicaties tijdens het consult. Vermeld altijd
-                    medische aandoeningen en medicatie.
+                    {t('Er zijn situaties waarin een besnijdenis niet direct kan worden uitgevoerd. De arts beoordeelt contra-indicaties tijdens het consult. Vermeld altijd medische aandoeningen en medicatie.', 'There are situations in which circumcision cannot be performed immediately. The doctor assesses contraindications during the consultation. Always report medical conditions and medication.')}
                   </p>
                 </section>
               </Reveal>
 
               <Reveal>
                 <section id="leeftijd" className="scroll-mt-28">
-                  <h2 className="text-xl font-bold text-ink mb-3">Leeftijd</h2>
+                  <h2 className="text-xl font-bold text-ink mb-3">{t('Leeftijd', 'Age')}</h2>
                   <p className="text-ink leading-relaxed">
-                    BCN voert besnijdenissen uit bij jongens tot 16 jaar en bij volwassen mannen
-                    vanaf 16 jaar. De behandeling wordt aangepast aan de leeftijd van de patiënt.
+                    {t('BCN voert besnijdenissen uit bij jongens tot 16 jaar en bij volwassen mannen vanaf 16 jaar. De behandeling wordt aangepast aan de leeftijd van de patiënt.', 'BCN performs circumcisions for boys up to age 16 and adult men from age 16. Treatment is adapted to the patient\'s age.')}
                   </p>
                 </section>
               </Reveal>

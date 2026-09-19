@@ -1,8 +1,10 @@
 import { Counter } from '@/components/Counter';
 import { Reveal } from '@/components/Reveal';
 import { trustStats } from '@/data/site';
+import { copy, useLanguage } from '@/language';
 
 export function TrustStrip() {
+  const { language } = useLanguage();
   return (
     <section className="bg-bcn-deep py-12 lg:py-16">
       <div className="mx-auto max-w-8xl px-5 sm:px-6 lg:px-10">
@@ -22,7 +24,7 @@ export function TrustStrip() {
                   )}
                 </div>
                 <div className="mt-2 text-[11px] sm:text-xs font-semibold uppercase tracking-[0.1em] text-bcn-light">
-                  {stat.label}
+                  {copy(language, stat.label, ({ BEHANDELINGEN: 'TREATMENTS', VESTIGINGEN: 'LOCATIONS', 'GEMIDDELDE BEOORDELING': 'AVERAGE RATING', 'JAAR ERVARING': 'YEARS OF EXPERIENCE' } as Record<string, string>)[stat.label] || stat.label)}
                 </div>
               </div>
             ))}

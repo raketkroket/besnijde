@@ -6,8 +6,35 @@ import { Link, useRouter } from '@/router';
 import { useScrollPosition } from '@/hooks/useReveal';
 import { locations } from '@/data/locations';
 import { navLinks, companyInfo } from '@/data/site';
+import { copy, useLanguage } from '@/language';
 
 export function Navigation() {
+  const { language, setLanguage: onLanguageChange } = useLanguage();
+  const t = (nl: string, en: string) => copy(language, nl, en);
+  const translatedNavLinks = navLinks.map((link) => ({
+    ...link,
+    label: t(link.label, ({
+      'Behandelingen': 'Treatments',
+      'Vestigingen': 'Locations',
+      'Over BCN': 'About BCN',
+      'Voor artsen': 'For clinicians',
+      'Informatie': 'Information',
+    } as Record<string, string>)[link.label] || link.label),
+    children: link.children?.map((child) => ({
+      ...child,
+      label: t(child.label, ({
+        'Besnijdenis voor jongens': 'Circumcision for boys',
+        'Besnijdenis voor mannen': 'Circumcision for men',
+        'Advies & correcties': 'Advice & corrections',
+        'Kosten': 'Costs',
+        'Algemene informatie': 'General information',
+        'Veelgestelde vragen': 'Frequently asked questions',
+        'Downloads': 'Downloads',
+        'Privacy': 'Privacy',
+        'Klachten & geschillen': 'Complaints & disputes',
+      } as Record<string, string>)[child.label] || child.label),
+    })),
+  }));
   const scrolled = useScrollPosition();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openMenu, setOpenMenu] = useState<string | null>(null);
@@ -45,16 +72,16 @@ export function Navigation() {
             : 'bg-white border-b border-transparent h-[72px] lg:h-[80px]'
         }`}
       >
-        <nav className="mx-auto max-w-8xl px-5 sm:px-6 lg:px-10 h-full" aria-label="Hoofdnavigatie">
+        <nav className="mx-auto max-w-8xl px-5 sm:px-6 lg:px-10 h-full" aria-label={t('Hoofdnavigatie', 'Main navigation')}>
           <div className="flex items-center justify-between h-full gap-4 lg:gap-8">
             {/* Logo */}
-            <Link to="/" className="flex-shrink-0" ariaLabel="Besnijdenis Centrum Nederland — Home">
+            <Link to="/" className="flex-shrink-0" ariaLabel={t('Besnijdenis Centrum Nederland — Home', 'Besnijdenis Centrum Nederland — Home')}>
               <Logo />
             </Link>
 
             {/* Desktop nav */}
             <div className="hidden lg:flex items-center gap-1">
-              {navLinks.map((link) => (
+              {translatedNavLinks.map((link) => (
                 <div
                   key={link.label}
                   className="relative"
@@ -75,7 +102,7 @@ export function Navigation() {
                   {link.children && openMenu === link.label && (
                     <div className="absolute top-full left-0 pt-3 animate-slide-down z-10">
                       <div className="bg-white rounded-xl2 shadow-deep border border-bcn-100 p-2 min-w-[260px]">
-                        {link.label === 'Vestigingen' ? (
+                        {link.href === '/vestigingen' ? (
                           <>
                             {locations.map((loc) => (
                               <button key={loc.slug} onClick={() => handleNav(`/vestigingen/${loc.slug}`)} className="group flex items-center gap-3 w-full p-3 rounded-lg hover:bg-bcn-ice transition-colors text-left">
@@ -85,7 +112,7 @@ export function Navigation() {
                             ))}
                             <div className="border-t border-bcn-100 mt-1 pt-1">
                               <button onClick={() => handleNav('/vestigingen')} className="flex items-center gap-3 w-full p-3 rounded-lg hover:bg-bcn-ice transition-colors text-left">
-                                <span className="text-sm font-semibold text-bcn-blue">Bekijk alle vestigingen</span>
+                                <span className="text-sm font-semibold text-bcn-blue">{t('Bekijk alle vestigingen', 'View all locations')}</span>
                                 <span className="text-bcn-blue">→</span>
                               </button>
                             </div>
@@ -107,17 +134,17 @@ export function Navigation() {
             {/* Desktop right */}
             <div className="hidden lg:flex items-center gap-4 flex-shrink-0">
               <div className="flex items-center gap-1.5 text-sm">
-                <button className="font-semibold text-ink px-2 py-1 rounded">NL</button>
+                <button onClick={() => onLanguageChange('nl')} aria-pressed={language === 'nl'} className={`px-2 py-1 rounded transition-colors ${language === 'nl' ? 'font-semibold text-ink' : 'font-medium text-ink-muted hover:text-ink'}`}>NL</button>
                 <span className="text-bcn-200">/</span>
-                <button className="font-medium text-ink-muted px-2 py-1 rounded hover:text-ink transition-colors">EN</button>
+                <button onClick={() => onLanguageChange('en')} aria-pressed={language === 'en'} className={`px-2 py-1 rounded transition-colors ${language === 'en' ? 'font-semibold text-ink' : 'font-medium text-ink-muted hover:text-ink'}`}>EN</button>
               </div>
-              <button onClick={() => handleNav('/contact')} className="text-sm font-medium text-ink hover:text-bcn-deep transition-colors">Contact</button>
-              <LinkButton to="/afspraak" size="sm" withArrow>Afspraak maken</LinkButton>
+              <button onClick={() => handleNav('/contact')} className="text-sm font-medium text-ink hover:text-bcn-deep transition-colors">{t('Contact', 'Contact')}</button>
+              <LinkButton to="/afspraak" size="sm" withArrow>{t('Afspraak maken', 'Make an appointment')}</LinkButton>
             </div>
 
             {/* Mobile: logo + menu only */}
             <div className="flex lg:hidden items-center">
-              <button onClick={() => setMobileOpen(true)} aria-label="Menu openen" className="p-2 -mr-2 text-ink rounded-lg">
+              <button onClick={() => setMobileOpen(true)} aria-label={t('Menu openen', 'Open menu')} className="p-2 -mr-2 text-ink rounded-lg">
                 <Menu size={22} />
               </button>
             </div>
@@ -141,7 +168,7 @@ export function Navigation() {
           {/* Header */}
           <div className="flex items-center justify-between px-5 h-[64px] border-b border-bcn-100 flex-shrink-0">
             <Logo />
-            <button onClick={() => setMobileOpen(false)} aria-label="Menu sluiten" className="p-2 -mr-2 text-ink rounded-lg">
+            <button onClick={() => setMobileOpen(false)} aria-label={t('Menu sluiten', 'Close menu')} className="p-2 -mr-2 text-ink rounded-lg">
               <X size={22} />
             </button>
           </div>
@@ -150,7 +177,7 @@ export function Navigation() {
           <div className="flex-1 overflow-y-auto px-5 py-6 scrollbar-hide">
             {/* Main links */}
             <div className="space-y-0">
-              {navLinks.map((link) => (
+              {translatedNavLinks.map((link) => (
                 <div key={link.label}>
                   <button
                     onClick={() => link.children ? setOpenMenu(openMenu === link.label ? null : link.label) : handleNav(link.href)}
@@ -161,7 +188,7 @@ export function Navigation() {
                   </button>
                   {link.children && openMenu === link.label && (
                     <div className="py-2 pl-4 space-y-0">
-                      {link.label === 'Vestigingen' ? (
+                      {link.href === '/vestigingen' ? (
                         <>
                           {locations.map((loc) => (
                             <button key={loc.slug} onClick={() => handleNav(`/vestigingen/${loc.slug}`)} className="flex items-center gap-2 w-full py-3 text-sm font-medium text-ink-muted">
@@ -169,7 +196,7 @@ export function Navigation() {
                               {loc.city}
                             </button>
                           ))}
-                          <button onClick={() => handleNav('/vestigingen')} className="block w-full py-3 text-sm font-semibold text-bcn-blue">Bekijk alle vestigingen →</button>
+                          <button onClick={() => handleNav('/vestigingen')} className="block w-full py-3 text-sm font-semibold text-bcn-blue">{t('Bekijk alle vestigingen', 'View all locations')} →</button>
                         </>
                       ) : (
                         link.children.map((child) => (
@@ -184,7 +211,7 @@ export function Navigation() {
               ))}
               {/* Contact as direct link */}
               <button onClick={() => handleNav('/contact')} className="block w-full text-left py-4 text-lg font-bold text-ink border-b border-bcn-50">
-                Contact
+                {t('Contact', 'Contact')}
               </button>
             </div>
 
@@ -198,21 +225,21 @@ export function Navigation() {
               <a href={`tel:${companyInfo.mainPhone}`} className="flex items-center gap-3 text-ink">
                 <Phone size={16} className="text-bcn-blue" />
                 <span className="font-semibold text-sm">{companyInfo.mainPhone}</span>
-                <span className="text-xs text-ink-muted">overig</span>
+                <span className="text-xs text-ink-muted">{t('overig', 'other locations')}</span>
               </a>
             </div>
 
             {/* NL / EN */}
             <div className="mt-6 flex items-center gap-2 text-sm">
-              <button className="font-semibold text-ink px-3 py-1.5 rounded-lg bg-bcn-ice">NL</button>
+              <button onClick={() => onLanguageChange('nl')} aria-pressed={language === 'nl'} className={`px-3 py-1.5 rounded-lg transition-colors ${language === 'nl' ? 'font-semibold text-ink bg-bcn-ice' : 'font-medium text-ink-muted'}`}>NL</button>
               <span className="text-bcn-200">/</span>
-              <button className="font-medium text-ink-muted px-3 py-1.5">EN</button>
+              <button onClick={() => onLanguageChange('en')} aria-pressed={language === 'en'} className={`px-3 py-1.5 rounded-lg transition-colors ${language === 'en' ? 'font-semibold text-ink bg-bcn-ice' : 'font-medium text-ink-muted'}`}>EN</button>
             </div>
           </div>
 
           {/* Bottom CTA */}
           <div className="px-5 py-4 border-t border-bcn-100 flex-shrink-0">
-            <LinkButton to="/afspraak" size="lg" withArrow className="w-full">Afspraak maken</LinkButton>
+            <LinkButton to="/afspraak" size="lg" withArrow className="w-full">{t('Afspraak maken', 'Make an appointment')}</LinkButton>
           </div>
         </div>
       </div>

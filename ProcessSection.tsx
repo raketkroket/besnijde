@@ -1,4 +1,5 @@
 import { Reveal } from '@/components/Reveal';
+import { copy, useLanguage } from '@/language';
 
 const steps = [
   { number: '01', title: 'Kies een vestiging', description: 'Selecteer een van onze negen locaties in Nederland.' },
@@ -8,18 +9,25 @@ const steps = [
 ];
 
 export function ProcessSection() {
+  const { language } = useLanguage();
+  const t = (nl: string, en: string) => copy(language, nl, en);
+  const translatedSteps = steps.map((step) => ({
+    ...step,
+    title: t(step.title, ({ 'Kies een vestiging': 'Choose a location', 'Plan een afspraak': 'Schedule an appointment', Behandeling: 'Treatment', Nazorg: 'Aftercare' } as Record<string, string>)[step.title]),
+    description: t(step.description, ({ 'Selecteer een van onze negen locaties in Nederland.': 'Select one of our nine locations in the Netherlands.', 'Kies een beschikbare datum en vul uw gegevens in.': 'Choose an available date and enter your details.', 'De behandeling wordt uitgevoerd door een ervaren arts onder plaatselijke verdoving.': 'An experienced doctor performs the treatment under local anaesthetic.', 'U ontvangt duidelijke nazorginstructies. Bij vragen staat BCN klaar.': 'You receive clear aftercare instructions. BCN is available for questions.' } as Record<string, string>)[step.description]),
+  }));
   return (
     <section className="py-16 sm:py-20 lg:py-28 bg-bcn-ice">
       <div className="mx-auto max-w-8xl px-5 sm:px-6 lg:px-10">
         <Reveal className="mb-10 sm:mb-14">
-          <h2 className="text-[clamp(1.75rem,6vw,3.5rem)] font-bold text-ink leading-[1.1] tracking-tight text-balance">Van afspraak tot nazorg.</h2>
+          <h2 className="text-[clamp(1.75rem,6vw,3.5rem)] font-bold text-ink leading-[1.1] tracking-tight text-balance">{t('Van afspraak tot nazorg.', 'From appointment to aftercare.')}</h2>
         </Reveal>
 
         {/* Desktop horizontal */}
         <div className="hidden lg:block relative">
           <Reveal><div className="absolute top-5 left-0 right-0 h-px bg-bcn-200" /></Reveal>
           <div className="grid grid-cols-4 gap-8 relative">
-            {steps.map((step) => (
+            {translatedSteps.map((step) => (
               <Reveal key={step.number}>
                 <div className="relative">
                   <div className="relative w-10 h-10 rounded-full bg-white border-2 border-bcn-blue flex items-center justify-center text-sm font-bold text-bcn-deep mb-6">{step.number}</div>
@@ -36,7 +44,7 @@ export function ProcessSection() {
           <div className="relative pl-8">
             <div className="absolute left-4 top-2 bottom-2 w-px bg-bcn-200" />
             <div className="space-y-8">
-              {steps.map((step) => (
+              {translatedSteps.map((step) => (
                 <Reveal key={step.number}>
                   <div className="relative">
                     <div className="absolute -left-8 top-0.5 w-8 h-8 rounded-full bg-white border-2 border-bcn-blue flex items-center justify-center text-xs font-bold text-bcn-deep">{step.number}</div>

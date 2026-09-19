@@ -3,9 +3,12 @@ import { Plus, Minus } from 'lucide-react';
 import { Reveal } from '@/components/Reveal';
 import { LinkButton } from '@/components/Button';
 import { faqPreview } from '@/data/faq';
+import { copy, useLanguage } from '@/language';
 
 export function FaqPreview() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const { language } = useLanguage();
+  const t = (nl: string, en: string) => copy(language, nl, en);
 
   return (
     <section className="py-16 sm:py-20 lg:py-28 bg-bcn-ice">
@@ -13,13 +16,13 @@ export function FaqPreview() {
         <div className="grid lg:grid-cols-12 gap-8 lg:gap-16">
           <div className="lg:col-span-4">
             <Reveal>
-              <h2 className="text-[clamp(1.75rem,6vw,3.5rem)] font-bold text-ink leading-[1.1] tracking-tight text-balance">Veelgestelde vragen.</h2>
+              <h2 className="text-[clamp(1.75rem,6vw,3.5rem)] font-bold text-ink leading-[1.1] tracking-tight text-balance">{t('Veelgestelde vragen.', 'Frequently asked questions.')}</h2>
             </Reveal>
             <Reveal>
-              <p className="mt-4 text-ink-muted">Antwoorden op de meestgestelde vragen over de behandeling, voorbereiding en nazorg.</p>
+              <p className="mt-4 text-ink-muted">{t('Antwoorden op de meestgestelde vragen over de behandeling, voorbereiding en nazorg.', 'Answers to the most common questions about treatment, preparation, and aftercare.')}</p>
             </Reveal>
             <Reveal className="mt-6">
-              <LinkButton to="/faq" variant="secondary" withArrow>Bekijk alle vragen</LinkButton>
+              <LinkButton to="/faq" variant="secondary" withArrow>{t('Bekijk alle vragen', 'View all questions')}</LinkButton>
             </Reveal>
           </div>
 

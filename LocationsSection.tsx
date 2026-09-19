@@ -3,6 +3,7 @@ import { MapPin, ArrowRight, Search } from 'lucide-react';
 import { Reveal } from '@/components/Reveal';
 import { Link, useRouter } from '@/router';
 import { locations } from '@/data/locations';
+import { copy, useLanguage } from '@/language';
 
 const mapPositions: Record<string, { x: number; y: number }> = {
   amsterdam: { x: 50, y: 36 }, almere: { x: 56, y: 38 }, utrecht: { x: 48, y: 45 },
@@ -14,6 +15,8 @@ export function LocationsSection() {
   const [hovered, setHovered] = useState<string | null>(null);
   const [query, setQuery] = useState('');
   const { navigate } = useRouter();
+  const { language } = useLanguage();
+  const t = (nl: string, en: string) => copy(language, nl, en);
 
   const filtered = locations.filter((l) =>
     l.city.toLowerCase().includes(query.toLowerCase()) ||
@@ -26,9 +29,9 @@ export function LocationsSection() {
         <Reveal className="mb-10 sm:mb-12 lg:mb-16">
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4">
             <h2 className="text-[clamp(1.75rem,6vw,3.5rem)] font-bold text-ink leading-[1.1] tracking-tight text-balance">
-              Altijd een vestiging in de buurt.
+              {t('Altijd een vestiging in de buurt.', 'Always a location nearby.')}
             </h2>
-            <p className="text-ink-muted max-w-md">Negen gespecialiseerde locaties verspreid over heel Nederland.</p>
+            <p className="text-ink-muted max-w-md">{t('Negen gespecialiseerde locaties verspreid over heel Nederland.', 'Nine specialist locations throughout the Netherlands.')}</p>
           </div>
         </Reveal>
 
@@ -38,7 +41,7 @@ export function LocationsSection() {
             <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-ink-muted" />
             <input
               type="text"
-              placeholder="Zoek op plaats / postcode"
+              placeholder={t('Zoek op plaats / postcode', 'Search by town / postal code')}
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               className="w-full pl-11 pr-4 py-3.5 rounded-lg border border-bcn-100 bg-bcn-50 text-ink placeholder:text-ink-muted focus:border-bcn-blue focus:ring-2 focus:ring-bcn-100 outline-none transition-all"
@@ -106,7 +109,7 @@ export function LocationsSection() {
             </Reveal>
             <Reveal className="mt-6">
               <Link to="/vestigingen" className="group inline-flex items-center gap-2 text-sm font-semibold text-bcn-deep hover:text-bcn-blue transition-colors">
-                Alle vestigingen bekijken<ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                {t('Alle vestigingen bekijken', 'View all locations')}<ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </Link>
             </Reveal>
           </div>

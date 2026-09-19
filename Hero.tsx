@@ -4,10 +4,13 @@ import { Image } from '@/components/Image';
 import { Reveal, ImageReveal } from '@/components/Reveal';
 import { useParallax } from '@/hooks/useReveal';
 import { heroStats } from '@/data/site';
+import { copy, useLanguage } from '@/language';
 import heroImage from './images/p2.jpg';
 
 export function Hero() {
   const parallaxRef = useParallax<HTMLDivElement>(0.03);
+  const { language } = useLanguage();
+  const t = (nl: string, en: string) => copy(language, nl, en);
 
   return (
     <section className="relative bg-white pt-[80px] overflow-hidden">
@@ -24,31 +27,30 @@ export function Hero() {
               <div className="flex items-center gap-3 mb-5 sm:mb-6">
                 <span className="h-px w-6 sm:w-8 bg-bcn-blue" />
                 <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-[0.15em] text-bcn-deep">
-                  SPECIALISTISCHE ZORG SINDS 2001
+                  {t('SPECIALISTISCHE ZORG SINDS 2001', 'SPECIALIST CARE SINCE 2001')}
                 </span>
               </div>
             </Reveal>
 
             <Reveal stagger>
               <h1 className="text-[clamp(2.25rem,7vw,4.75rem)] font-bold text-ink leading-[1.05] tracking-tight text-balance">
-                Ervaren zorg voor jongens en mannen.
+                {t('Ervaren zorg voor jongens en mannen.', 'Experienced care for boys and men.')}
               </h1>
             </Reveal>
 
             <Reveal>
               <p className="mt-5 sm:mt-6 text-base sm:text-body-lg text-ink-muted max-w-lg text-pretty leading-relaxed">
-                Gespecialiseerde besnijdeniszorg door ervaren artsen, op negen locaties verspreid
-                door Nederland.
+                {t('Gespecialiseerde besnijdeniszorg door ervaren artsen, op negen locaties verspreid door Nederland.', 'Specialist circumcision care provided by experienced doctors at nine locations throughout the Netherlands.')}
               </p>
             </Reveal>
 
             <Reveal>
               <div className="mt-7 sm:mt-8 flex flex-col sm:flex-row gap-3">
                 <LinkButton to="/afspraak" size="lg" withArrow className="w-full sm:w-auto">
-                  Afspraak maken
+                  {t('Afspraak maken', 'Make an appointment')}
                 </LinkButton>
                 <LinkButton to="/vestigingen" variant="secondary" size="lg" className="w-full sm:w-auto">
-                  Vind een vestiging
+                  {t('Vind een vestiging', 'Find a location')}
                 </LinkButton>
               </div>
             </Reveal>
@@ -68,7 +70,7 @@ export function Hero() {
                       )}
                     </div>
                     <div className="mt-0.5 text-[11px] sm:text-xs text-ink-muted leading-snug">
-                      {stat.label}
+                      {t(stat.label, ({ behandelingen: 'treatments', vestigingen: 'locations', sinds: 'since' } as Record<string, string>)[stat.label] || stat.label)}
                     </div>
                   </div>
                 ))}
@@ -83,7 +85,7 @@ export function Hero() {
                 <div className="relative">
                   <Image
                     src={heroImage}
-                    alt="Arts in gesprek met ouder en kind in een moderne kliniek"
+                    alt={t('Arts in gesprek met ouder en kind in een moderne kliniek', 'Doctor speaking with a parent and child in a modern clinic')}
                     aspect="aspect-[16/9] sm:aspect-[4/3] lg:aspect-[4/5]"
                     rounded="rounded-xl2"
                     objectPosition="object-center sm:object-top lg:object-center"
@@ -96,7 +98,7 @@ export function Hero() {
                       <span className="text-xs font-semibold text-bcn-deep">BCN</span>
                     </div>
                     <p className="text-sm font-medium text-ink leading-snug">
-                      9 gespecialiseerde locaties door heel Nederland
+                      {t('9 gespecialiseerde locaties door heel Nederland', '9 specialist locations throughout the Netherlands')}
                     </p>
                   </div>
                 </div>

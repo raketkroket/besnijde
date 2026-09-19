@@ -4,8 +4,11 @@ import { Reveal } from '@/components/Reveal';
 import { LinkButton } from '@/components/Button';
 import { reviews } from '@/data/reviews';
 import { companyInfo } from '@/data/site';
+import { copy, useLanguage } from '@/language';
 
 export function ReviewsPage() {
+  const { language } = useLanguage();
+  const t = (nl: string, en: string) => copy(language, nl, en);
   return (
     <>
       <section className="pt-[80px] bg-white">
@@ -14,10 +17,10 @@ export function ReviewsPage() {
             <nav className="flex items-center gap-2 text-xs text-ink-muted mb-8">
               <Link to="/" className="hover:text-bcn-deep">Home</Link>
               <span>/</span>
-              <Link to="/reviews" className="text-ink">Ervaringen</Link>
+              <Link to="/reviews" className="text-ink">{t('Ervaringen', 'Reviews')}</Link>
             </nav>
-            <h1 className="text-hero text-ink text-balance">Ervaringen van onze patiënten.</h1>
-            <p className="mt-4 text-body-lg text-ink-muted max-w-xl">Persoonlijke aandacht en goede zorg staan centraal.</p>
+            <h1 className="text-hero text-ink text-balance">{t('Ervaringen van onze patiënten.', 'Experiences from our patients.')}</h1>
+            <p className="mt-4 text-body-lg text-ink-muted max-w-xl">{t('Persoonlijke aandacht en goede zorg staan centraal.', 'Personal attention and good care are central.')}</p>
           </Reveal>
 
           <Reveal className="mt-12">
@@ -28,13 +31,13 @@ export function ReviewsPage() {
                   <div className="flex items-center gap-1 mb-1">
                     {[1, 2, 3, 4, 5].map((i) => <Star key={i} size={16} fill="#168FE3" className="text-bcn-blue" />)}
                   </div>
-                  <div className="text-xs text-ink-muted">Google beoordeling</div>
+                  <div className="text-xs text-ink-muted">{t('Google beoordeling', 'Google rating')}</div>
                 </div>
               </div>
               <div className="h-12 w-px bg-bcn-100 hidden sm:block" />
               <div className="flex items-center gap-4">
                 <div className="text-4xl font-bold text-bcn-deep">{companyInfo.patientRating}</div>
-                <div className="text-xs text-ink-muted">Gemiddelde patiëntbeoordeling</div>
+                <div className="text-xs text-ink-muted">{t('Gemiddelde patiëntbeoordeling', 'Average patient rating')}</div>
               </div>
             </div>
           </Reveal>
@@ -63,7 +66,7 @@ export function ReviewsPage() {
           </div>
 
           <Reveal className="mt-12">
-            <LinkButton to="/reviews/schrijf" variant="secondary" withArrow>Schrijf een recensie</LinkButton>
+            <LinkButton to="/reviews/schrijf" variant="secondary" withArrow>{t('Schrijf een recensie', 'Write a review')}</LinkButton>
           </Reveal>
         </div>
       </section>
