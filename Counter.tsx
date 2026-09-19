@@ -1,6 +1,3 @@
-import { RefObject } from 'react';
-import { useCountUp, useReveal } from '@/hooks/useReveal';
-
 interface CounterProps {
   target: number;
   suffix?: string;
@@ -18,8 +15,7 @@ export function Counter({
   separator = false,
   className = '',
 }: CounterProps) {
-  const { ref, isVisible } = useReveal();
-  const value = useCountUp(target, isVisible);
+  const value = target;
 
   const formatted = separator
     ? Math.round(value).toLocaleString('nl-NL')
@@ -28,7 +24,7 @@ export function Counter({
       : Math.round(value).toString();
 
   return (
-    <span ref={ref as RefObject<HTMLSpanElement>} className={className}>
+    <span className={className}>
       {prefix}
       {formatted}
       {suffix}

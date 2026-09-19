@@ -18,7 +18,7 @@ export function AboutPage() {
   return (
     <>
       <section className="pt-[80px] bg-white">
-        <div className="mx-auto max-w-8xl px-6 lg:px-10 py-12 lg:py-20">
+        <div className="mx-auto max-w-8xl px-5 sm:px-6 lg:px-10 py-10 lg:py-20">
           <Reveal>
             <nav className="flex items-center gap-2 text-xs text-ink-muted mb-8">
               <Link to="/" className="hover:text-bcn-deep">Home</Link>
@@ -36,7 +36,7 @@ export function AboutPage() {
 
       {/* Intro */}
       <section className="py-16 lg:py-24 bg-white">
-        <div className="mx-auto max-w-4xl px-6 lg:px-10">
+        <div className="mx-auto max-w-4xl px-5 sm:px-6 lg:px-10">
           <Reveal>
             <h2 className="text-h3 text-ink mb-6">{t('Besnijdenis Centrum Nederland', 'Besnijdenis Centrum Nederland')}</h2>
             <div className="space-y-4 text-ink leading-relaxed">
@@ -50,7 +50,7 @@ export function AboutPage() {
 
       {/* Visie */}
       <section className="py-16 lg:py-24 bg-bcn-ice">
-        <div className="mx-auto max-w-4xl px-6 lg:px-10">
+        <div className="mx-auto max-w-4xl px-5 sm:px-6 lg:px-10">
           <Reveal>
             <h2 className="text-h3 text-ink mb-6">{t('Onze visie', 'Our vision')}</h2>
             <div className="space-y-4 text-ink leading-relaxed">
@@ -67,21 +67,25 @@ export function AboutPage() {
 
       {/* Geschiedenis timeline */}
       <section className="py-16 lg:py-24 bg-white">
-        <div className="mx-auto max-w-4xl px-6 lg:px-10">
+        <div className="mx-auto max-w-4xl px-5 sm:px-6 lg:px-10">
           <Reveal>
             <h2 className="text-h3 text-ink mb-10">{t('Onze geschiedenis', 'Our history')}</h2>
           </Reveal>
-          <div className="space-y-3 pb-24 lg:hidden">
-            {timeline.map((item) => (
-              <Reveal key={item.year}>
-                <div className="rounded-lg border border-bcn-100 bg-white p-4">
-                  <div className="mb-2 inline-flex rounded-full bg-bcn-ice px-2.5 py-1 text-xs font-bold text-bcn-deep">
-                    {item.year}
+          <div className="relative pl-8 pb-20 lg:hidden">
+            <div className="absolute left-3.5 top-2 bottom-20 w-px bg-bcn-200" />
+            <div className="space-y-8">
+              {timeline.map((item) => (
+                <Reveal key={item.year}>
+                  <div className="relative">
+                    <div className="absolute -left-8 top-0 w-7 h-7 rounded-full bg-bcn-blue text-white flex items-center justify-center text-[10px] font-bold">
+                      {item.year === t('Vandaag', 'Today') ? '★' : item.year.slice(-2)}
+                    </div>
+                    <div className="font-bold text-bcn-deep text-sm mb-1">{item.year}</div>
+                    <p className="text-sm text-ink-muted leading-relaxed">{item.text}</p>
                   </div>
-                  <p className="text-sm text-ink-muted leading-relaxed">{item.text}</p>
-                </div>
-              </Reveal>
-            ))}
+                </Reveal>
+              ))}
+            </div>
           </div>
           <div className="relative hidden pl-8 lg:block">
             <div className="absolute left-4 top-2 bottom-2 w-px bg-bcn-200" />
@@ -104,7 +108,7 @@ export function AboutPage() {
 
       {/* Artsen */}
       <section className="py-16 lg:py-24 bg-bcn-ice">
-        <div className="mx-auto max-w-4xl px-6 lg:px-10">
+        <div className="mx-auto max-w-4xl px-5 sm:px-6 lg:px-10">
           <Reveal>
             <h2 className="text-h3 text-ink mb-6">{t('Onze artsen & assistenten', 'Our doctors & assistants')}</h2>
             <p className="text-ink leading-relaxed mb-8">
@@ -132,7 +136,7 @@ export function AboutPage() {
 
       {/* Resultaten */}
       <section className="py-16 lg:py-24 bg-white">
-        <div className="mx-auto max-w-4xl px-6 lg:px-10">
+        <div className="mx-auto max-w-4xl px-5 sm:px-6 lg:px-10">
           <Reveal>
             <h2 className="text-h3 text-ink mb-6">{t('Onze resultaten', 'Our results')}</h2>
             <p className="text-ink leading-relaxed mb-8">

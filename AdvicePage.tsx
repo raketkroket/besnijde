@@ -12,7 +12,7 @@ export function AdvicePage() {
   return (
     <>
       <section className="pt-[80px] bg-white">
-        <div className="mx-auto max-w-8xl px-6 lg:px-10 py-12 lg:py-20">
+        <div className="mx-auto max-w-8xl px-5 sm:px-6 lg:px-10 py-10 lg:py-20">
           <Reveal>
             <nav className="flex items-center gap-2 text-xs text-ink-muted mb-8">
               <Link to="/" className="hover:text-bcn-deep">Home</Link>
@@ -65,7 +65,7 @@ export function AdvicePage() {
 
       {/* Process */}
       <section className="py-16 lg:py-24 bg-bcn-ice">
-        <div className="mx-auto max-w-4xl px-6 lg:px-10">
+        <div className="mx-auto max-w-4xl px-5 sm:px-6 lg:px-10">
           <Reveal>
             <h2 className="text-h3 text-ink mb-10">{t('Het adviestraject', 'The advice process')}</h2>
           </Reveal>
@@ -88,7 +88,7 @@ export function AdvicePage() {
 
       {/* Outcomes */}
       <section className="py-16 lg:py-24 bg-white">
-        <div className="mx-auto max-w-4xl px-6 lg:px-10">
+        <div className="mx-auto max-w-4xl px-5 sm:px-6 lg:px-10">
           <Reveal>
             <h2 className="text-h3 text-ink mb-6">{t('Mogelijke uitkomsten', 'Possible outcomes')}</h2>
             <div className="grid sm:grid-cols-2 gap-4">
@@ -105,7 +105,7 @@ export function AdvicePage() {
 
       {/* Correctie */}
       <section className="py-16 lg:py-24 bg-bcn-ice">
-        <div className="mx-auto max-w-4xl px-6 lg:px-10">
+        <div className="mx-auto max-w-4xl px-5 sm:px-6 lg:px-10">
           <Reveal>
             <h2 className="text-h3 text-ink mb-6">{t('Corrigerende operatie', 'Corrective surgery')}</h2>
             <p className="text-ink leading-relaxed mb-4">
@@ -129,7 +129,7 @@ export function AdvicePage() {
       </section>
 
       <section className="py-16 lg:py-20 bg-bcn-blue">
-        <div className="mx-auto max-w-3xl px-6 lg:px-10 text-center">
+        <div className="mx-auto max-w-3xl px-5 sm:px-6 lg:px-10 text-center">
           <Reveal>
             <h2 className="text-h3 text-white mb-6">{t('Bel voor een afspraak', 'Call to make an appointment')}</h2>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">

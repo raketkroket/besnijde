@@ -13,14 +13,14 @@ export function Hero() {
   const t = (nl: string, en: string) => copy(language, nl, en);
 
   return (
-    <section className="relative bg-white pt-[80px] overflow-hidden">
-      {/* Subtle background */}
+    <section className="relative bg-white pt-[72px] lg:pt-[80px] overflow-hidden">
+      {/* Restrained desktop field behind the media. */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 right-0 w-[50%] h-full bg-gradient-to-l from-bcn-ice/50 to-transparent hidden lg:block" />
+        <div className="hero-curve absolute top-0 right-0 hidden h-full w-[45%] bg-bcn-ice lg:block" />
       </div>
 
-      <div className="relative mx-auto max-w-8xl px-5 sm:px-6 lg:px-10 py-10 sm:py-14 lg:py-20 w-full">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+      <div className="relative mx-auto max-w-8xl px-5 sm:px-6 lg:px-10 py-8 sm:py-12 lg:py-16 w-full">
+        <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-9 lg:gap-16 items-center">
           {/* Text */}
           <div className="order-1">
             <Reveal>
@@ -33,7 +33,7 @@ export function Hero() {
             </Reveal>
 
             <Reveal stagger>
-              <h1 className="text-[clamp(2.25rem,7vw,4.75rem)] font-bold text-ink leading-[1.05] tracking-tight text-balance">
+              <h1 className="font-editorial text-[clamp(2.375rem,10vw,4.75rem)] font-bold text-ink leading-[1.02] text-balance">
                 {t('Ervaren zorg voor jongens en mannen.', 'Experienced care for boys and men.')}
               </h1>
             </Reveal>
@@ -57,7 +57,7 @@ export function Hero() {
 
             {/* Trust indicators */}
             <Reveal>
-              <div className="mt-10 sm:mt-12 grid grid-cols-3 gap-4 sm:gap-8 pt-8 border-t border-bcn-100">
+              <div className="mt-10 sm:mt-12 grid grid-cols-3 gap-4 sm:gap-8 pt-7 editorial-rule">
                 {heroStats.map((stat) => (
                   <div key={stat.label}>
                     <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-bcn-deep tracking-tight">
@@ -79,20 +79,20 @@ export function Hero() {
           </div>
 
           {/* Image */}
-          <div className="order-2 relative">
+          <div className="order-2 relative lg:pl-3">
             <div ref={parallaxRef} className="will-change-transform">
               <ImageReveal>
                 <div className="relative">
                   <Image
                     src={heroImage}
                     alt={t('Arts in gesprek met ouder en kind in een moderne kliniek', 'Doctor speaking with a parent and child in a modern clinic')}
-                    aspect="aspect-[16/9] sm:aspect-[4/3] lg:aspect-[4/5]"
-                    rounded="rounded-xl2"
-                    objectPosition="object-center sm:object-top lg:object-center"
+                    aspect="aspect-[16/9] sm:aspect-[3/2] lg:aspect-[4/5]"
+                    rounded="rounded-none"
+                    objectPosition="object-center sm:object-[center_32%] lg:object-center"
                     priority
                   />
                   {/* Info module — desktop only, no overlap on mobile */}
-                  <div className="hidden lg:block absolute bottom-4 left-4 bg-white rounded-xl2 shadow-card border border-bcn-100 p-5 max-w-[240px]">
+                  <div className="hidden lg:block absolute bottom-0 -left-8 bg-white border-l-4 border-bcn-blue p-5 max-w-[240px]">
                     <div className="flex items-center gap-2 mb-1.5">
                       <div className="w-2 h-2 rounded-full bg-bcn-blue" />
                       <span className="text-xs font-semibold text-bcn-deep">BCN</span>

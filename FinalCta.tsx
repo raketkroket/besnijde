@@ -6,13 +6,14 @@ export function FinalCta() {
   const { language } = useLanguage();
   const t = (nl: string, en: string) => copy(language, nl, en);
   return (
-    <section className="bg-bcn-blue py-16 sm:py-20 lg:py-28 overflow-hidden">
+    <section className="relative bg-bcn-deep py-16 sm:py-20 lg:py-28 overflow-hidden">
+      <div className="absolute inset-y-0 right-0 hidden w-1/3 bg-bcn-blue lg:block hero-curve" />
       <div className="relative mx-auto max-w-3xl px-5 sm:px-6 lg:px-10 text-center">
         <Reveal>
           <span className="text-xs font-semibold uppercase tracking-[0.15em] text-bcn-light">{t('Klaar om een afspraak te maken?', 'Ready to make an appointment?')}</span>
         </Reveal>
         <Reveal stagger>
-          <h2 className="mt-4 text-[clamp(1.75rem,6vw,3.5rem)] font-bold text-white leading-[1.1] tracking-tight text-balance">
+          <h2 className="font-editorial mt-4 text-[clamp(1.75rem,6vw,3.5rem)] font-bold text-white leading-[1.1] text-balance">
             {t('Kies uw vestiging en plan eenvoudig een afspraak.', 'Choose your location and easily schedule an appointment.')}
           </h2>
         </Reveal>

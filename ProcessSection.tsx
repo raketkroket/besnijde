@@ -39,16 +39,16 @@ export function ProcessSection() {
           </div>
         </div>
 
-        {/* Mobile vertical */}
+        {/* Mobile vertical timeline */}
         <div className="lg:hidden">
-          <div className="space-y-3">
+          <div className="relative space-y-0 before:absolute before:bottom-5 before:left-[17px] before:top-5 before:w-px before:bg-bcn-200">
             {translatedSteps.map((step) => (
               <Reveal key={step.number}>
-                <div className="flex gap-4 rounded-lg border border-bcn-100 bg-white p-4">
-                  <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full border-2 border-bcn-blue text-xs font-bold text-bcn-deep">
+                <div className="relative flex gap-4 py-5 first:pt-0 last:pb-0">
+                  <div className="relative z-10 flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full border-2 border-bcn-blue bg-bcn-ice text-xs font-bold text-bcn-deep">
                     {step.number}
                   </div>
-                  <div className="min-w-0 pt-0.5">
+                  <div className="min-w-0 border-b border-bcn-200/70 pb-5 pt-0.5 last:border-b-0">
                     <h3 className="font-bold text-ink">{step.title}</h3>
                     <p className="mt-1 text-sm text-ink-muted leading-relaxed">{step.description}</p>
                   </div>

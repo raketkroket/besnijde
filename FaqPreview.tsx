@@ -35,7 +35,7 @@ export function FaqPreview() {
                     <div key={i}>
                       <button onClick={() => setOpenIndex(isOpen ? null : i)} className="w-full flex items-center justify-between gap-4 py-5 text-left group" aria-expanded={isOpen}>
                         <span className="font-semibold text-ink group-hover:text-bcn-deep transition-colors">{item.question}</span>
-                        <span className={`flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center transition-all ${isOpen ? 'bg-bcn-blue text-white' : 'bg-white text-bcn-deep'}`}>{isOpen ? <Minus size={15} /> : <Plus size={15} />}</span>
+                        <span className={`flex-shrink-0 w-7 h-7 rounded-full border flex items-center justify-center transition-all ${isOpen ? 'border-bcn-blue bg-bcn-blue text-white' : 'border-bcn-200 bg-transparent text-bcn-deep'}`}>{isOpen ? <Minus size={15} /> : <Plus size={15} />}</span>
                       </button>
                       <div className="overflow-hidden transition-all duration-300 ease-smooth" style={{ maxHeight: isOpen ? '200px' : '0px' }}>
                         <p className="pb-5 text-ink-muted leading-relaxed pr-4 sm:pr-12 text-pretty">{item.answer}</p>

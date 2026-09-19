@@ -58,33 +58,32 @@ export function TreatmentPaths() {
           </h2>
         </Reveal>
 
-        {/* Mobile: 1 column. Tablet: 2. Desktop: 3 */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <div className="border-t border-bcn-200">
           {translatedPaths.map((p) => (
             <Reveal key={p.number}>
-              <button onClick={() => navigate(p.href)} className="group block w-full text-left">
-                <div className="relative mb-5 overflow-hidden rounded-xl2">
+              <button onClick={() => navigate(p.href)} className="group grid w-full grid-cols-1 gap-5 border-b border-bcn-200 py-7 text-left sm:grid-cols-[minmax(10rem,0.7fr)_1.3fr] sm:items-center sm:gap-8 lg:grid-cols-[2rem_minmax(13rem,0.65fr)_1fr_auto] lg:gap-9 lg:py-9">
+                <span className="hidden text-sm font-semibold text-bcn-blue lg:block">{p.number}</span>
+                <div className="relative overflow-hidden">
                   <ImageReveal>
                     <Image
                       src={p.image}
                       alt={p.alt}
-                      aspect="aspect-[5/4]"
-                      rounded="rounded-xl2"
+                      aspect="aspect-[16/9] sm:aspect-[5/4]"
+                      rounded="rounded-none"
                       objectPosition="object-center"
+                      imgClassName="transition-transform duration-500 group-hover:scale-[1.03]"
                     />
                   </ImageReveal>
-                  <div className="absolute top-4 left-4 w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center text-sm font-bold text-bcn-deep">
-                    {p.number}
-                  </div>
                 </div>
-                <h3 className="text-lg sm:text-xl font-bold text-ink group-hover:text-bcn-deep transition-colors">
-                  {p.title}
-                </h3>
-                <p className="mt-2 text-sm text-ink-muted leading-relaxed">{p.description}</p>
-                <div className="mt-4 flex items-center justify-between">
+                <div>
+                  <span className="mb-3 block text-xs font-semibold uppercase tracking-[0.12em] text-bcn-blue lg:hidden">{p.number}</span>
+                  <h3 className="font-editorial text-2xl font-bold leading-tight text-ink group-hover:text-bcn-deep transition-colors">{p.title}</h3>
+                  <p className="mt-3 text-sm text-ink-muted leading-relaxed max-w-md">{p.description}</p>
+                </div>
+                <div className="flex items-center justify-between gap-5 lg:justify-end">
                   <div>
                     <span className="text-lg font-bold text-bcn-deep">{p.price}</span>
-                    <span className="text-xs text-ink-muted ml-2">{p.priceNote}</span>
+                    <span className="ml-2 text-xs text-ink-muted">{p.priceNote}</span>
                   </div>
                   <ArrowRight size={18} className="text-bcn-blue group-hover:translate-x-1 transition-transform" />
                 </div>

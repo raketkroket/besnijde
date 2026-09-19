@@ -9,15 +9,15 @@ export function ExpertiseSection() {
   const { language } = useLanguage();
   const t = (nl: string, en: string) => copy(language, nl, en);
   return (
-    <section className="py-16 sm:py-20 lg:py-28 bg-bcn-dark text-white">
+    <section className="py-16 sm:py-20 lg:py-28 bg-bcn-deep text-white">
       <div className="mx-auto max-w-8xl px-5 sm:px-6 lg:px-10">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+        <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-8 lg:gap-20 items-center">
           <div>
             <Reveal>
               <span className="text-xs font-semibold uppercase tracking-[0.15em] text-bcn-light">{t('Expertise', 'Expertise')}</span>
             </Reveal>
             <Reveal stagger>
-              <h2 className="mt-4 text-[clamp(1.75rem,6vw,3.5rem)] font-bold text-white leading-[1.1] tracking-tight text-balance">
+              <h2 className="font-editorial mt-4 text-[clamp(1.75rem,6vw,3.5rem)] font-bold text-white leading-[1.1] text-balance">
                 {t('Ervaren artsen op elke locatie.', 'Experienced doctors at every location.')}
               </h2>
             </Reveal>
@@ -38,7 +38,7 @@ export function ExpertiseSection() {
 
           <div>
             <ImageReveal>
-              <Image src={expertiseImage} alt={t('Arts in een moderne medische praktijk', 'Doctor in a modern medical practice')} aspect="aspect-[4/3]" rounded="rounded-xl2" />
+              <Image src={expertiseImage} alt={t('Arts in een moderne medische praktijk', 'Doctor in a modern medical practice')} aspect="aspect-[4/3]" rounded="rounded-none" />
             </ImageReveal>
           </div>
         </div>

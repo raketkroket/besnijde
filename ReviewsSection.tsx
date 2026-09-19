@@ -26,10 +26,10 @@ export function ReviewsSection() {
 
         {/* Mobile: 1 column. Tablet+: grid */}
         <Reveal stagger>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-6">
             {reviews.slice(0, 3).map((review) => (
-              <article key={review.id} className="bg-bcn-ice rounded-xl2 p-6 sm:p-7">
-                <Quote size={24} className="text-bcn-300 mb-4" />
+              <article key={review.id} className="border-t-2 border-bcn-blue bg-bcn-ice/60 p-6 sm:p-7">
+                <Quote size={24} className="text-bcn-blue mb-4" />
                 <div className="flex items-center gap-1 mb-4">
                   {Array.from({ length: review.rating }).map((_, i) => <Star key={i} size={13} fill="#168FE3" className="text-bcn-blue" />)}
                 </div>

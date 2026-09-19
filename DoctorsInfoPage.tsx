@@ -21,7 +21,7 @@ export function DoctorsInfoPage() {
   return (
     <>
       <section className="pt-[80px] bg-white">
-        <div className="mx-auto max-w-8xl px-6 lg:px-10 py-12 lg:py-20">
+        <div className="mx-auto max-w-8xl px-5 sm:px-6 lg:px-10 py-10 lg:py-20">
           <Reveal>
             <nav className="flex items-center gap-2 text-xs text-ink-muted mb-8">
               <Link to="/" className="hover:text-bcn-deep">Home</Link>
@@ -40,16 +40,16 @@ export function DoctorsInfoPage() {
       </section>
 
       <div className="bg-white pb-20 lg:pb-28">
-        <div className="mx-auto max-w-8xl px-6 lg:px-10">
+        <div className="mx-auto max-w-8xl px-5 sm:px-6 lg:px-10">
           <div className="grid lg:grid-cols-12 gap-10 lg:gap-12">
             {/* Sticky nav */}
             <div className="lg:col-span-3">
-              <div className="lg:sticky lg:top-28 space-y-1">
+              <div className="flex gap-1 overflow-x-auto scrollbar-hide pb-2 lg:sticky lg:top-28 lg:block lg:space-y-1 lg:pb-0">
                 {sections.map((s) => (
                   <button
                     key={s.id}
                     onClick={() => document.getElementById(s.id)?.scrollIntoView({ behavior: 'smooth' })}
-                    className="block w-full text-left px-3 py-2.5 text-sm font-medium text-ink-muted hover:bg-bcn-ice hover:text-bcn-deep rounded-lg transition-colors"
+                    className="flex-shrink-0 text-left px-3 py-2.5 text-sm font-medium text-ink-muted hover:bg-bcn-ice hover:text-bcn-deep rounded-lg transition-colors lg:block lg:w-full"
                   >
                     {t(s.label, ({ 'Lokale anesthesie': 'Local anaesthesia', 'Contra-indicaties': 'Contraindications', Leeftijd: 'Age', Toestemming: 'Consent', Genezing: 'Recovery', Complicaties: 'Complications', Nazorg: 'Aftercare', Overleg: 'Consultation' } as Record<string, string>)[s.label])}
                   </button>
@@ -58,7 +58,7 @@ export function DoctorsInfoPage() {
             </div>
 
             {/* Content */}
-            <div className="lg:col-span-9 space-y-12">
+            <div className="lg:col-span-9 space-y-14">
               <Reveal>
                 <section id="anesthesie" className="scroll-mt-28">
                   <h2 className="text-xl font-bold text-ink mb-3">{t('Lokale anesthesie', 'Local anaesthesia')}</h2>

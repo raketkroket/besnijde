@@ -12,7 +12,7 @@ export function ReviewsPage() {
   return (
     <>
       <section className="pt-[80px] bg-white">
-        <div className="mx-auto max-w-8xl px-6 lg:px-10 py-12 lg:py-20">
+        <div className="mx-auto max-w-8xl px-5 sm:px-6 lg:px-10 py-10 lg:py-20">
           <Reveal>
             <nav className="flex items-center gap-2 text-xs text-ink-muted mb-8">
               <Link to="/" className="hover:text-bcn-deep">Home</Link>
@@ -45,11 +45,11 @@ export function ReviewsPage() {
       </section>
 
       <section className="pb-24 lg:pb-32 bg-white">
-        <div className="mx-auto max-w-8xl px-6 lg:px-10">
+        <div className="mx-auto max-w-8xl px-5 sm:px-6 lg:px-10">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {reviews.map((review) => (
+            {reviews.map((review, index) => (
               <Reveal key={review.id}>
-                <article className="bg-bcn-ice rounded-xl2 p-7 h-full">
+                <article className={`rounded-xl2 p-5 sm:p-7 h-full ${index % 3 === 1 ? 'bg-white border border-bcn-100' : 'bg-bcn-ice'}`}>
                   <Quote size={24} className="text-bcn-300 mb-4" />
                   <div className="flex items-center gap-1 mb-4">
                     {Array.from({ length: review.rating }).map((_, i) => <Star key={i} size={13} fill="#168FE3" className="text-bcn-blue" />)}

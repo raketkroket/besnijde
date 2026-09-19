@@ -13,6 +13,7 @@
   body {
     @apply bg-white text-ink font-sans antialiased;
     font-feature-settings: 'cv11', 'ss01';
+    letter-spacing: 0;
   }
 
   ::selection {
@@ -20,7 +21,9 @@
   }
 
   h1, h2, h3, h4 {
-    @apply font-sans font-bold text-ink tracking-tight;
+    @apply font-bold text-ink;
+    font-family: Georgia, 'Times New Roman', serif;
+    letter-spacing: 0;
   }
 }
 
@@ -90,6 +93,39 @@
 
   .clip-curve {
     clip-path: ellipse(100% 100% at 0% 0%);
+  }
+
+  .editorial-rule {
+    @apply border-t border-bcn-200/70;
+  }
+
+  .editorial-content {
+    counter-reset: treatment-section;
+  }
+
+  .editorial-section {
+    counter-increment: treatment-section;
+  }
+
+  .editorial-section::before {
+    content: counter(treatment-section, decimal-leading-zero);
+    display: block;
+    width: min(100% - 2.5rem, 56rem);
+    margin: 0 auto 0.875rem;
+    color: theme('colors.bcn.deep');
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+  }
+
+  @media (min-width: 640px) {
+    .editorial-section::before {
+      width: min(100% - 3rem, 56rem);
+    }
+  }
+
+  .hero-curve {
+    border-radius: 0 0 0 42%;
   }
 }
 

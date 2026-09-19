@@ -33,11 +33,12 @@ export default {
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        editorial: ['Georgia', 'Times New Roman', 'serif'],
       },
       fontSize: {
-        'hero': ['clamp(2.5rem, 5.5vw, 4.75rem)', { lineHeight: '1.05', letterSpacing: '-0.025em', fontWeight: '700' }],
-        'h2': ['clamp(2rem, 4vw, 3.5rem)', { lineHeight: '1.1', letterSpacing: '-0.02em', fontWeight: '700' }],
-        'h3': ['clamp(1.5rem, 3vw, 2.25rem)', { lineHeight: '1.15', letterSpacing: '-0.015em', fontWeight: '600' }],
+        'hero': ['clamp(2.5rem, 5.5vw, 4.75rem)', { lineHeight: '1.05', letterSpacing: '0', fontWeight: '700' }],
+        'h2': ['clamp(2rem, 4vw, 3.5rem)', { lineHeight: '1.1', letterSpacing: '0', fontWeight: '700' }],
+        'h3': ['clamp(1.5rem, 3vw, 2.25rem)', { lineHeight: '1.15', letterSpacing: '0', fontWeight: '600' }],
         'body-lg': ['clamp(1.05rem, 1.5vw, 1.2rem)', { lineHeight: '1.6' }],
         'label': ['0.75rem', { letterSpacing: '0.08em', fontWeight: '600' }],
       },

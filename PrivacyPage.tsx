@@ -12,7 +12,7 @@ export function PrivacyPage() {
   return (
     <>
       <section className="pt-[80px] bg-white">
-        <div className="mx-auto max-w-8xl px-6 lg:px-10 py-12 lg:py-20">
+        <div className="mx-auto max-w-8xl px-5 sm:px-6 lg:px-10 py-10 lg:py-20">
           <Reveal>
             <nav className="flex items-center gap-2 text-xs text-ink-muted mb-8">
               <Link to="/" className="hover:text-bcn-deep">Home</Link>
@@ -25,18 +25,18 @@ export function PrivacyPage() {
       </section>
 
       <section className="pb-20 lg:pb-28 bg-white">
-        <div className="mx-auto max-w-8xl px-6 lg:px-10">
+        <div className="mx-auto max-w-8xl px-5 sm:px-6 lg:px-10">
           <div className="grid lg:grid-cols-12 gap-10 lg:gap-12">
             {/* TOC */}
             <div className="lg:col-span-3">
               <div className="lg:sticky lg:top-28">
-                <h2 className="text-xs font-semibold uppercase tracking-wider text-ink-muted mb-4">{t('Inhoud', 'Contents')}</h2>
-                <nav className="space-y-1">
+                <h2 className="text-xs font-semibold uppercase tracking-wider text-ink-muted mb-3 lg:mb-4">{t('Inhoud', 'Contents')}</h2>
+                <nav className="flex gap-1 overflow-x-auto scrollbar-hide pb-2 lg:block lg:space-y-1 lg:pb-0">
                   {tocItems.map((item) => (
                     <a
                       key={item}
                       href={`#${['avg-wgbo', 'verwerkingsdoeleinden', 'vertrouwelijkheid', 'beveiliging', 'bewaartermijnen', 'patintenrechten', 'inzage-afschrift', 'delen-met-derden', 'informatie-uitwisseling', 'klachten'][tocItems.indexOf(item)]}`}
-                      className="block px-3 py-2 text-sm font-medium text-ink-muted hover:bg-bcn-ice hover:text-bcn-deep rounded-lg transition-colors"
+                      className="flex-shrink-0 px-3 py-2 text-sm font-medium text-ink-muted hover:bg-bcn-ice hover:text-bcn-deep rounded-lg transition-colors lg:block"
                     >
                       {item}
                     </a>

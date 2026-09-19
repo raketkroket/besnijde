@@ -9,11 +9,8 @@ interface RevealProps {
 }
 
 export function Reveal({ children, className = '', as = 'div', stagger = false }: RevealProps) {
-  const { ref, isVisible } = useReveal();
-
   return createElement(as, {
-    ref,
-    className: `${stagger ? 'reveal-stagger' : 'reveal'} ${isVisible ? 'is-visible' : ''} ${className}`,
+    className: `${stagger ? 'reveal-stagger' : 'reveal'} is-visible ${className}`,
   }, children);
 }
 

@@ -69,7 +69,7 @@ export function Navigation() {
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-smooth ${
           scrolled
             ? 'bg-white/95 backdrop-blur-md border-b border-bcn-100 h-[64px]'
-            : 'bg-white border-b border-transparent h-[72px] lg:h-[80px]'
+            : 'bg-white/90 backdrop-blur-sm border-b border-transparent h-[72px] lg:h-[80px]'
         }`}
       >
         <nav className="mx-auto max-w-8xl px-5 sm:px-6 lg:px-10 h-full" aria-label={t('Hoofdnavigatie', 'Main navigation')}>
@@ -90,7 +90,7 @@ export function Navigation() {
                 >
                   <button
                     onClick={() => handleNav(link.href)}
-                    className={`flex items-center gap-1 px-3.5 py-2 text-sm font-medium tracking-tight transition-colors duration-200 rounded-lg whitespace-nowrap ${
+                    className={`flex items-center gap-1 px-3 py-2 text-sm font-medium transition-colors duration-200 whitespace-nowrap ${
                       isActive(link.href) ? 'text-bcn-deep' : 'text-ink hover:text-bcn-deep'
                     }`}
                   >
@@ -101,7 +101,7 @@ export function Navigation() {
                   </button>
                   {link.children && openMenu === link.label && (
                     <div className="absolute top-full left-0 pt-3 animate-slide-down z-10">
-                      <div className="bg-white rounded-xl2 shadow-deep border border-bcn-100 p-2 min-w-[260px]">
+                      <div className="bg-white border border-bcn-100 p-2 min-w-[260px] shadow-soft">
                         {link.href === '/vestigingen' ? (
                           <>
                             {locations.map((loc) => (
@@ -144,7 +144,7 @@ export function Navigation() {
 
             {/* Mobile: logo + menu only */}
             <div className="flex lg:hidden items-center">
-              <button onClick={() => setMobileOpen(true)} aria-label={t('Menu openen', 'Open menu')} className="p-2 -mr-2 text-ink rounded-lg">
+              <button onClick={() => setMobileOpen(true)} aria-label={t('Menu openen', 'Open menu')} className="p-2 -mr-2 text-ink">
                 <Menu size={22} />
               </button>
             </div>
@@ -158,7 +158,7 @@ export function Navigation() {
           mobileOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
       >
-        <div className="absolute inset-0 bg-bcn-dark/40 backdrop-blur-sm" onClick={() => setMobileOpen(false)} />
+        <div className="absolute inset-0 bg-bcn-dark/30 backdrop-blur-sm" onClick={() => setMobileOpen(false)} />
         <div
           className={`absolute right-0 top-0 bottom-0 w-full max-w-[400px] bg-white flex flex-col transition-transform duration-300 ease-smooth ${
             mobileOpen ? 'translate-x-0' : 'translate-x-full'
@@ -166,9 +166,9 @@ export function Navigation() {
           style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
         >
           {/* Header */}
-          <div className="flex items-center justify-between px-5 h-[64px] border-b border-bcn-100 flex-shrink-0">
+          <div className="flex items-center justify-between px-5 h-[64px] border-b-2 border-bcn-blue flex-shrink-0">
             <Logo />
-            <button onClick={() => setMobileOpen(false)} aria-label={t('Menu sluiten', 'Close menu')} className="p-2 -mr-2 text-ink rounded-lg">
+            <button onClick={() => setMobileOpen(false)} aria-label={t('Menu sluiten', 'Close menu')} className="p-2 -mr-2 text-ink">
               <X size={22} />
             </button>
           </div>

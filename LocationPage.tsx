@@ -35,7 +35,7 @@ export function LocationPage({ location }: LocationPageProps) {
     <>
       {/* Hero */}
       <section className="pt-[80px] bg-bcn-dark text-white">
-        <div className="mx-auto max-w-8xl px-6 lg:px-10 py-12 lg:py-20">
+        <div className="mx-auto max-w-8xl px-5 sm:px-6 lg:px-10 py-10 lg:py-20">
           <Reveal>
             <nav className="flex items-center gap-2 text-xs text-white/50 mb-8" aria-label="Breadcrumb">
               <Link to="/" className="hover:text-white">Home</Link>
@@ -53,7 +53,7 @@ export function LocationPage({ location }: LocationPageProps) {
             </h1>
             <p className="mt-5 text-lg text-white/60 max-w-xl text-pretty">{localized?.description ?? location.description}</p>
             <div className="mt-8 flex flex-col sm:flex-row gap-3">
-              <LinkButton to="/afspraak" variant="light" size="lg" withArrow>{t('Afspraak maken', 'Make an appointment')}</LinkButton>
+              <LinkButton to="/afspraak" variant="light" size="lg" withArrow className="w-full sm:w-auto">{t('Afspraak maken', 'Make an appointment')}</LinkButton>
               <a
                 href={routeUrl}
                 target="_blank"
@@ -70,11 +70,11 @@ export function LocationPage({ location }: LocationPageProps) {
 
       {/* Info */}
       <section className="py-16 lg:py-24 bg-white">
-        <div className="mx-auto max-w-8xl px-6 lg:px-10">
+        <div className="mx-auto max-w-8xl px-5 sm:px-6 lg:px-10">
           <div className="grid lg:grid-cols-12 gap-8 lg:gap-12">
             {/* Address card */}
             <Reveal className="lg:col-span-5">
-              <div className="bg-bcn-ice rounded-xl2 p-8">
+              <div className="bg-bcn-ice rounded-xl2 p-5 sm:p-8">
                 <h2 className="text-xs font-semibold uppercase tracking-wider text-ink-muted mb-6">Contact</h2>
 
                 <div className="flex items-start gap-4 mb-5">

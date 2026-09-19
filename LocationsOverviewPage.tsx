@@ -13,7 +13,7 @@ export function LocationsOverviewPage() {
   return (
     <>
       <section className="pt-[80px] bg-white">
-        <div className="mx-auto max-w-8xl px-6 lg:px-10 py-12 lg:py-20">
+        <div className="mx-auto max-w-8xl px-5 sm:px-6 lg:px-10 py-10 lg:py-20">
           <Reveal>
             <span className="text-xs font-semibold uppercase tracking-[0.15em] text-bcn-deep">{t('Vestigingen', 'Locations')}</span>
             <h1 className="mt-4 text-hero text-ink text-balance">
@@ -27,13 +27,13 @@ export function LocationsOverviewPage() {
       </section>
 
       <section className="pb-24 lg:pb-32 bg-white">
-        <div className="mx-auto max-w-8xl px-6 lg:px-10">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="mx-auto max-w-8xl px-5 sm:px-6 lg:px-10">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {locations.map((loc) => (
               <Reveal key={loc.slug}>
                 <article
                   onClick={() => navigate(`/vestigingen/${loc.slug}`)}
-                  className="group cursor-pointer p-6 bg-white border border-bcn-100 rounded-xl2 hover:border-bcn-300 hover:shadow-card transition-all duration-300"
+                  className="group cursor-pointer p-5 sm:p-6 bg-white border border-bcn-100 rounded-xl2 hover:border-bcn-300 hover:shadow-card transition-all duration-300"
                 >
                   <div className="flex items-start justify-between mb-4">
                     <div className="w-11 h-11 rounded-lg bg-bcn-ice flex items-center justify-center group-hover:bg-bcn-200 transition-colors">

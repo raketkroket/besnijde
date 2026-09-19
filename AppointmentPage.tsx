@@ -38,7 +38,7 @@ export function AppointmentPage() {
   const next = () => setStep((s) => Math.min(s + 1, 5) as Step);
   const prev = () => setStep((s) => Math.max(s - 1, 0) as Step);
 
-  const inputClass = 'w-full px-4 py-3 min-h-[52px] rounded-lg border border-bcn-200 bg-white text-ink focus:border-bcn-blue focus:ring-2 focus:ring-bcn-100 outline-none transition-all';
+  const inputClass = 'w-full px-4 py-3 min-h-[52px] rounded-lg border border-bcn-200 bg-white text-base text-ink focus:border-bcn-blue focus:ring-2 focus:ring-bcn-100 outline-none transition-all';
   const labelClass = 'block text-sm font-semibold text-ink mb-1.5';
 
   return (
@@ -90,22 +90,22 @@ export function AppointmentPage() {
         </div>
       </section>
 
-      <section className="py-10 sm:py-12 lg:py-16 bg-bcn-50 min-h-[60vh]">
-        <div className="mx-auto max-w-2xl px-5 sm:px-6 lg:px-10">
+      <section className="py-8 sm:py-12 lg:py-16 bg-bcn-50 min-h-[60vh]">
+        <div className="mx-auto max-w-5xl px-5 sm:px-6 lg:px-10">
           {step === 0 && (
             <Reveal key="s0">
               <h2 className="text-2xl font-bold text-ink mb-2">{t('Voor wie is de afspraak?', 'Who is the appointment for?')}</h2>
               <p className="text-ink-muted mb-6">{t('Selecteer het type patiënt.', 'Select the patient type.')}</p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <button onClick={() => setPatientType('jongen')} className={`p-6 rounded-xl2 border-2 text-left transition-all ${patientType === 'jongen' ? 'border-bcn-blue bg-white shadow-card' : 'border-bcn-100 bg-white/50 hover:border-bcn-200'}`}>
-                  <div className="text-xs font-semibold uppercase tracking-wider text-bcn-deep mb-2">{t('Jongen', 'Boy')}</div>
-                  <div className="text-lg font-bold text-ink">{t('Jongen tot 16 jaar', 'Boy up to age 16')}</div>
-                  <div className="text-sm text-ink-muted mt-2">€325</div>
+                <button onClick={() => setPatientType('jongen')} aria-pressed={patientType === 'jongen'} className={`p-5 sm:p-6 rounded-lg border-2 text-left transition-all ${patientType === 'jongen' ? 'border-bcn-blue bg-bcn-blue text-white shadow-card' : 'border-bcn-100 bg-white hover:border-bcn-200'}`}>
+                  <div className={`text-xs font-semibold uppercase tracking-wider mb-2 ${patientType === 'jongen' ? 'text-white/70' : 'text-bcn-deep'}`}>{t('Jongen', 'Boy')}</div>
+                  <div className={`text-lg font-bold ${patientType === 'jongen' ? 'text-white' : 'text-ink'}`}>{t('Jongen tot 16 jaar', 'Boy up to age 16')}</div>
+                  <div className={`text-sm mt-2 ${patientType === 'jongen' ? 'text-white/80' : 'text-ink-muted'}`}>€325</div>
                 </button>
-                <button onClick={() => setPatientType('man')} className={`p-6 rounded-xl2 border-2 text-left transition-all ${patientType === 'man' ? 'border-bcn-blue bg-white shadow-card' : 'border-bcn-100 bg-white/50 hover:border-bcn-200'}`}>
-                  <div className="text-xs font-semibold uppercase tracking-wider text-bcn-deep mb-2">{t('Man', 'Man')}</div>
-                  <div className="text-lg font-bold text-ink">{t('Man vanaf 16 jaar', 'Man aged 16 or over')}</div>
-                  <div className="text-sm text-ink-muted mt-2">€495</div>
+                <button onClick={() => setPatientType('man')} aria-pressed={patientType === 'man'} className={`p-5 sm:p-6 rounded-lg border-2 text-left transition-all ${patientType === 'man' ? 'border-bcn-blue bg-bcn-blue text-white shadow-card' : 'border-bcn-100 bg-white hover:border-bcn-200'}`}>
+                  <div className={`text-xs font-semibold uppercase tracking-wider mb-2 ${patientType === 'man' ? 'text-white/70' : 'text-bcn-deep'}`}>{t('Man', 'Man')}</div>
+                  <div className={`text-lg font-bold ${patientType === 'man' ? 'text-white' : 'text-ink'}`}>{t('Man vanaf 16 jaar', 'Man aged 16 or over')}</div>
+                  <div className={`text-sm mt-2 ${patientType === 'man' ? 'text-white/80' : 'text-ink-muted'}`}>€495</div>
                 </button>
               </div>
             </Reveal>
@@ -117,9 +117,9 @@ export function AppointmentPage() {
               <p className="text-ink-muted mb-6">{t('Selecteer de locatie die het beste bij u past.', 'Select the location that suits you best.')}</p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {locations.map((loc) => (
-                  <button key={loc.slug} onClick={() => setSelectedLocation(loc.slug)} className={`p-4 rounded-xl2 border-2 text-left transition-all flex items-start gap-3 ${selectedLocation === loc.slug ? 'border-bcn-blue bg-white shadow-card' : 'border-bcn-100 bg-white/50 hover:border-bcn-200'}`}>
-                    <MapPin size={16} className={`mt-1 flex-shrink-0 ${selectedLocation === loc.slug ? 'text-bcn-deep' : 'text-ink-muted'}`} />
-                    <div><div className="font-semibold text-ink text-sm">{loc.city}</div><div className="text-xs text-ink-muted">{loc.area}</div></div>
+                  <button key={loc.slug} onClick={() => setSelectedLocation(loc.slug)} aria-pressed={selectedLocation === loc.slug} className={`p-4 rounded-lg border-2 text-left transition-all flex items-start gap-3 ${selectedLocation === loc.slug ? 'border-bcn-blue bg-bcn-blue text-white shadow-card' : 'border-bcn-100 bg-white hover:border-bcn-200'}`}>
+                    <MapPin size={16} className={`mt-1 flex-shrink-0 ${selectedLocation === loc.slug ? 'text-white' : 'text-ink-muted'}`} />
+                    <div><div className={`font-semibold text-sm ${selectedLocation === loc.slug ? 'text-white' : 'text-ink'}`}>{loc.city}</div><div className={`text-xs ${selectedLocation === loc.slug ? 'text-white/70' : 'text-ink-muted'}`}>{loc.area}</div></div>
                   </button>
                 ))}
               </div>
@@ -132,9 +132,9 @@ export function AppointmentPage() {
               <p className="text-ink-muted mb-6">{t('Beschikbare data in', 'Available dates in')} {location?.city}.</p>
               <div className="space-y-2">
                 {(location?.nextDates || []).map((date) => (
-                  <button key={date} onClick={() => setSelectedDate(date)} className={`w-full p-4 rounded-xl2 border-2 text-left flex items-center justify-between transition-all ${selectedDate === date ? 'border-bcn-blue bg-white shadow-card' : 'border-bcn-100 bg-white/50 hover:border-bcn-200'}`}>
-                    <span className="font-semibold text-ink">{date}</span>
-                    {selectedDate === date && <Check size={18} className="text-bcn-deep" />}
+                  <button key={date} onClick={() => setSelectedDate(date)} aria-pressed={selectedDate === date} className={`w-full p-4 rounded-lg border-2 text-left flex items-center justify-between transition-all ${selectedDate === date ? 'border-bcn-blue bg-bcn-blue text-white shadow-card' : 'border-bcn-100 bg-white hover:border-bcn-200'}`}>
+                    <span className={`font-semibold ${selectedDate === date ? 'text-white' : 'text-ink'}`}>{date}</span>
+                    {selectedDate === date && <Check size={18} className="text-white" />}
                   </button>
                 ))}
               </div>

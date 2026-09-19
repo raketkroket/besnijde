@@ -111,8 +111,8 @@ export function ManTreatmentPage() {
         </div>
       </div>
 
-      <div className="bg-white">
-        <section id="hoe-gaat" className="py-14 lg:py-24 scroll-mt-32">
+      <div className="bg-white editorial-content">
+        <section id="hoe-gaat" className="editorial-section py-16 lg:py-24 scroll-mt-32">
           <div className="mx-auto max-w-4xl px-5 sm:px-6 lg:px-10">
             <Reveal>
               <h2 className="text-[clamp(1.5rem,4vw,2.25rem)] font-bold text-ink mb-6">{t('Hoe gaat de behandeling?', 'How does treatment work?')}</h2>
@@ -131,7 +131,7 @@ export function ManTreatmentPage() {
         </section>
 
         {sections.map((sec) => (
-          <section key={sec.id} id={sec.id} className={`py-14 lg:py-24 scroll-mt-32 ${sec.bg}`}>
+          <section key={sec.id} id={sec.id} className={`editorial-section py-16 lg:py-24 scroll-mt-32 ${sec.bg}`}>
             <div className="mx-auto max-w-4xl px-5 sm:px-6 lg:px-10">
               <Reveal>
                 <h2 className="text-[clamp(1.5rem,4vw,2.25rem)] font-bold text-ink mb-6">{sec.title}</h2>
@@ -142,7 +142,7 @@ export function ManTreatmentPage() {
           </section>
         ))}
 
-        <section id="mogelijke-problemen" className="py-14 lg:py-24 scroll-mt-32">
+        <section id="mogelijke-problemen" className="editorial-section py-16 lg:py-24 scroll-mt-32">
           <div className="mx-auto max-w-4xl px-5 sm:px-6 lg:px-10">
             <Reveal>
               <div className="flex items-center gap-3 mb-4"><AlertTriangle size={22} className="text-amber-500 flex-shrink-0" /><h2 className="text-[clamp(1.5rem,4vw,2.25rem)] font-bold text-ink">{t('Wanneer moet u contact opnemen?', 'When should you contact us?')}</h2></div>

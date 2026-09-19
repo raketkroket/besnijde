@@ -127,8 +127,8 @@ export function BoysTreatmentPage() {
       </div>
 
       {/* Content */}
-      <div className="bg-white">
-        <section id="over" className="py-14 lg:py-24 scroll-mt-32">
+      <div className="bg-white editorial-content">
+        <section id="over" className="editorial-section py-16 lg:py-24 scroll-mt-32">
           <div className="mx-auto max-w-4xl px-5 sm:px-6 lg:px-10">
             <Reveal>
               <h2 className="text-[clamp(1.5rem,4vw,2.25rem)] font-bold text-ink mb-6">{t('Over de behandeling', 'About the treatment')}</h2>
@@ -155,7 +155,7 @@ export function BoysTreatmentPage() {
           </div>
         </section>
 
-        <section id="redenen" className="py-14 lg:py-24 bg-bcn-ice scroll-mt-32">
+        <section id="redenen" className="editorial-section py-16 lg:py-24 bg-bcn-ice scroll-mt-32">
           <div className="mx-auto max-w-4xl px-5 sm:px-6 lg:px-10">
             <Reveal>
               <h2 className="text-[clamp(1.5rem,4vw,2.25rem)] font-bold text-ink mb-6">{t('Redenen voor een besnijdenis', 'Reasons for circumcision')}</h2>
@@ -168,28 +168,28 @@ export function BoysTreatmentPage() {
           </div>
         </section>
 
-        <section id="wanneer-niet" className="py-14 lg:py-24 scroll-mt-32">
+        <section id="wanneer-niet" className="editorial-section py-16 lg:py-24 scroll-mt-32">
           <div className="mx-auto max-w-4xl px-5 sm:px-6 lg:px-10">
             <Reveal><h2 className="text-[clamp(1.5rem,4vw,2.25rem)] font-bold text-ink mb-6">{t('Wanneer wordt er niet besneden?', 'When is circumcision not performed?')}</h2>
             <p className="text-ink leading-relaxed">{t('Er zijn situaties waarin een besnijdenis niet direct kan worden uitgevoerd, of waarin aanvullend onderzoek nodig is. De arts beoordeelt dit tijdens het consult. Bespreek eventuele medische aandoeningen of medicatie altijd vooraf met de arts.', 'There are situations in which circumcision cannot be performed immediately or additional assessment is needed. The doctor evaluates this during the consultation. Always discuss medical conditions or medication with the doctor in advance.')}</p></Reveal>
           </div>
         </section>
 
-        <section id="leeftijd-angst" className="py-14 lg:py-24 bg-bcn-ice scroll-mt-32">
+        <section id="leeftijd-angst" className="editorial-section py-16 lg:py-24 bg-bcn-ice scroll-mt-32">
           <div className="mx-auto max-w-4xl px-5 sm:px-6 lg:px-10">
             <Reveal><h2 className="text-[clamp(1.5rem,4vw,2.25rem)] font-bold text-ink mb-6">{t('Leeftijd & angst', 'Age & anxiety')}</h2>
             <p className="text-ink leading-relaxed">{t('De behandeling wordt aangepast aan de leeftijd van het kind. Bij jongere kinderen wordt extra aandacht besteed aan een rustige sfeer. Als uw zoon erg angstig is, bespreek dit dan vooraf met de arts. De arts heeft ervaring met angstige kinderen en zal de tijd nemen om uw zoon op zijn gemak te stellen.', 'Treatment is adapted to the child\'s age. For younger children, special attention is given to a calm atmosphere. If your son is very anxious, discuss this with the doctor beforehand. The doctor is experienced with anxious children and takes time to put your son at ease.')}</p></Reveal>
           </div>
         </section>
 
-        <section id="toestemming" className="py-14 lg:py-24 scroll-mt-32">
+        <section id="toestemming" className="editorial-section py-16 lg:py-24 scroll-mt-32">
           <div className="mx-auto max-w-4xl px-5 sm:px-6 lg:px-10">
             <Reveal><h2 className="text-[clamp(1.5rem,4vw,2.25rem)] font-bold text-ink mb-6">{t('Toestemming', 'Consent')}</h2>
             <p className="text-ink leading-relaxed">{t('Voor een besnijdenis bij minderjarigen is toestemming nodig van de ouders of voogden. Beide ouders met gezag moeten toestemming geven. Dit wordt vastgelegd op het behandelovereenkomst-formulier.', 'Circumcision for minors requires consent from parents or guardians. Both parents with legal authority must give consent. This is recorded on the treatment agreement form.')}</p></Reveal>
           </div>
         </section>
 
-        <section id="genezing" className="py-14 lg:py-24 bg-bcn-ice scroll-mt-32">
+        <section id="genezing" className="editorial-section py-16 lg:py-24 bg-bcn-ice scroll-mt-32">
           <div className="mx-auto max-w-4xl px-5 sm:px-6 lg:px-10">
             <Reveal>
               <h2 className="text-[clamp(1.5rem,4vw,2.25rem)] font-bold text-ink mb-4">{t('Genezing', 'Recovery')}</h2>
@@ -208,7 +208,7 @@ export function BoysTreatmentPage() {
           </div>
         </section>
 
-        <section id="mogelijke-problemen" className="py-14 lg:py-24 scroll-mt-32">
+        <section id="mogelijke-problemen" className="editorial-section py-16 lg:py-24 scroll-mt-32">
           <div className="mx-auto max-w-4xl px-5 sm:px-6 lg:px-10">
             <Reveal>
               <div className="flex items-center gap-3 mb-4"><AlertTriangle size={22} className="text-amber-500 flex-shrink-0" /><h2 className="text-[clamp(1.5rem,4vw,2.25rem)] font-bold text-ink">{t('Wanneer moet u contact opnemen?', 'When should you contact us?')}</h2></div>
@@ -230,14 +230,14 @@ export function BoysTreatmentPage() {
           </div>
         </section>
 
-        <section id="nazorg" className="py-14 lg:py-24 bg-bcn-ice scroll-mt-32">
+        <section id="nazorg" className="editorial-section py-16 lg:py-24 bg-bcn-ice scroll-mt-32">
           <div className="mx-auto max-w-4xl px-5 sm:px-6 lg:px-10">
             <Reveal><h2 className="text-[clamp(1.5rem,4vw,2.25rem)] font-bold text-ink mb-6">{t('Nazorg', 'Aftercare')}</h2>
             <p className="text-ink leading-relaxed">{t('Na de behandeling ontvangt u duidelijke nazorginstructies. Deze bevatten informatie over verzorging, baden, vaseline en eventuele ongemakken. Bij vragen kunt u altijd contact opnemen met de vestiging.', 'After treatment, you receive clear aftercare instructions, including information on care, bathing, petroleum jelly, and possible discomfort. Contact the location with any questions.')}</p></Reveal>
           </div>
         </section>
 
-        <section id="kosten" className="py-14 lg:py-24 scroll-mt-32">
+        <section id="kosten" className="editorial-section py-16 lg:py-24 scroll-mt-32">
           <div className="mx-auto max-w-4xl px-5 sm:px-6 lg:px-10">
             <Reveal>
               <h2 className="text-[clamp(1.5rem,4vw,2.25rem)] font-bold text-ink mb-6">{t('Kosten', 'Costs')}</h2>
@@ -247,7 +247,7 @@ export function BoysTreatmentPage() {
           </div>
         </section>
 
-        <section id="klachten" className="py-14 lg:py-24 bg-bcn-ice scroll-mt-32">
+        <section id="klachten" className="editorial-section py-16 lg:py-24 bg-bcn-ice scroll-mt-32">
           <div className="mx-auto max-w-4xl px-5 sm:px-6 lg:px-10">
             <Reveal><h2 className="text-[clamp(1.5rem,4vw,2.25rem)] font-bold text-ink mb-6">{t('Klachten', 'Complaints')}</h2>
             <p className="text-ink leading-relaxed">{t('Bent u niet tevreden over de behandeling of heeft u een klacht? Neem dan contact op met de betreffende vestiging. Wij nemen klachten serieus en zullen deze in behandeling nemen volgens onze klachtenprocedure.', 'If you are dissatisfied with treatment or have a complaint, contact the relevant location. We take complaints seriously and handle them under our complaints procedure.')}</p></Reveal>

@@ -9,11 +9,11 @@ export function MobileStickyCta() {
 
   return (
     <div
-      className="lg:hidden fixed bottom-0 left-0 right-0 z-40 px-4 pt-2 bg-gradient-to-t from-white via-white/90 to-transparent pointer-events-none"
+      className="lg:hidden fixed bottom-0 left-0 right-0 z-40 px-3 pt-3 bg-white/80 backdrop-blur-md border-t border-bcn-100 pointer-events-none"
       style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
     >
-      <div className="pointer-events-auto pb-3">
-        <LinkButton to="/afspraak" size="lg" withArrow className="w-full shadow-card">
+      <div className="pointer-events-auto pb-2">
+        <LinkButton to="/afspraak" size="lg" withArrow className="w-full !h-14 !py-0 !shadow-none">
           {copy(language, 'Afspraak maken', 'Make an appointment')}
         </LinkButton>
       </div>

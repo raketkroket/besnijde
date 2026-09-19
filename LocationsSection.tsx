@@ -28,7 +28,7 @@ export function LocationsSection() {
       <div className="mx-auto max-w-8xl px-5 sm:px-6 lg:px-10">
         <Reveal className="mb-10 sm:mb-12 lg:mb-16">
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4">
-            <h2 className="text-[clamp(1.75rem,6vw,3.5rem)] font-bold text-ink leading-[1.1] tracking-tight text-balance">
+            <h2 className="font-editorial text-[clamp(1.75rem,6vw,3.5rem)] font-bold text-ink leading-[1.1] text-balance">
               {t('Altijd een vestiging in de buurt.', 'Always a location nearby.')}
             </h2>
             <p className="text-ink-muted max-w-md">{t('Negen gespecialiseerde locaties verspreid over heel Nederland.', 'Nine specialist locations throughout the Netherlands.')}</p>
@@ -52,7 +52,7 @@ export function LocationsSection() {
               <button
                 key={loc.slug}
                 onClick={() => navigate(`/vestigingen/${loc.slug}`)}
-                className="group w-full flex items-center justify-between gap-4 p-4 rounded-lg hover:bg-bcn-ice transition-colors text-left"
+                className="group w-full flex items-center justify-between gap-4 border-b border-bcn-100 px-1 py-4 hover:bg-bcn-ice transition-colors text-left"
               >
                 <div className="flex items-center gap-3">
                   <div className="w-9 h-9 rounded-full bg-bcn-ice flex items-center justify-center group-hover:bg-bcn-200 transition-colors">
@@ -73,7 +73,7 @@ export function LocationsSection() {
         <div className="hidden lg:grid lg:grid-cols-12 gap-8 lg:gap-12">
           <div className="lg:col-span-7">
             <Reveal>
-              <div className="relative bg-bcn-50 rounded-xl2 p-10 aspect-[5/4] overflow-hidden">
+              <div className="relative border-y border-bcn-200 bg-bcn-50 p-7 lg:p-10 aspect-[5/4] overflow-hidden">
                 <svg viewBox="0 0 100 100" className="w-full h-full" aria-label="Kaart van Nederland met BCN vestigingen">
                   <path d="M28 22 Q33 15 40 13 Q47 11 54 12 Q61 13 67 17 Q71 21 71 27 Q73 32 71 37 Q69 42 65 45 L67 49 Q69 55 65 59 Q61 65 57 69 Q55 75 53 79 Q51 85 49 89 Q47 91 43 89 Q41 85 39 81 Q37 75 35 69 Q33 62 33 55 Q31 47 29 39 Q27 32 28 27 Z" fill="#D6EEFC" stroke="#8CCBF3" strokeWidth="0.4" />
                   <path d="M46 18 Q50 16 54 18 Q56 22 55 26 Q52 28 48 27 Q45 25 45 22 Z" fill="#EEF8FE" />
@@ -97,7 +97,7 @@ export function LocationsSection() {
             <Reveal stagger>
               <div className="space-y-1">
                 {locations.map((loc) => (
-                  <button key={loc.slug} onClick={() => navigate(`/vestigingen/${loc.slug}`)} onMouseEnter={() => setHovered(loc.slug)} onMouseLeave={() => setHovered(null)} className="group w-full flex items-center justify-between gap-4 p-4 rounded-lg hover:bg-bcn-ice transition-colors text-left">
+                  <button key={loc.slug} onClick={() => navigate(`/vestigingen/${loc.slug}`)} onMouseEnter={() => setHovered(loc.slug)} onMouseLeave={() => setHovered(null)} className="group w-full flex items-center justify-between gap-4 border-b border-bcn-100 px-1 py-4 hover:bg-bcn-ice transition-colors text-left">
                     <div className="flex items-center gap-3">
                       <div className="w-9 h-9 rounded-full bg-bcn-ice flex items-center justify-center group-hover:bg-bcn-200 transition-colors"><MapPin size={15} className="text-bcn-deep" /></div>
                       <div><div className="font-semibold text-ink text-sm">{loc.city}</div><div className="text-xs text-ink-muted">{loc.area}</div></div>
