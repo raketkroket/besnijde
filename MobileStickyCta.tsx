@@ -9,7 +9,7 @@ export function MobileStickyCta() {
 
   return (
     <div
-      className="lg:hidden fixed bottom-0 left-0 right-0 z-40 px-3 pt-3 bg-white/80 backdrop-blur-md border-t border-bcn-100 pointer-events-none"
+      className="lg:hidden fixed bottom-0 left-0 right-0 z-40 px-3 pt-3 bg-white/95 border-t border-bcn-100 pointer-events-none"
       style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
     >
       <div className="pointer-events-auto pb-2">

@@ -68,8 +68,8 @@ export function Navigation() {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-smooth ${
           scrolled
-            ? 'bg-white/95 backdrop-blur-md border-b border-bcn-100 h-[64px]'
-            : 'bg-white/90 backdrop-blur-sm border-b border-transparent h-[72px] lg:h-[80px]'
+            ? 'bg-white/95 border-b border-bcn-100 h-[64px]'
+            : 'bg-white/95 border-b border-transparent h-[72px] lg:h-[80px]'
         }`}
       >
         <nav className="mx-auto max-w-8xl px-5 sm:px-6 lg:px-10 h-full" aria-label={t('Hoofdnavigatie', 'Main navigation')}>

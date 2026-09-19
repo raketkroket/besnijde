@@ -67,9 +67,17 @@ export function useCountUp(target: number, start: boolean, duration = 1800) {
 
 export function useScrollPosition() {
   const [scrolled, setScrolled] = useState(false);
+  const scrolledRef = useRef(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
+    const onScroll = () => {
+      const nextScrolled = window.scrollY > 24;
+      if (nextScrolled === scrolledRef.current) return;
+
+      scrolledRef.current = nextScrolled;
+      setScrolled(nextScrolled);
+    };
+
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
@@ -86,20 +94,31 @@ export function useParallax<T extends HTMLElement = HTMLDivElement>(strength = 0
     if (!el) return;
 
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReducedMotion) return;
+    const isMobile = window.matchMedia('(max-width: 767px)').matches;
+    if (prefersReducedMotion || isMobile) return;
 
-    const onScroll = () => {
+    let frameId = 0;
+
+    const updatePosition = () => {
+      frameId = 0;
       const rect = el.getBoundingClientRect();
       const windowH = window.innerHeight;
       if (rect.bottom < 0 || rect.top > windowH) return;
       const center = rect.top + rect.height / 2;
       const distance = center - windowH / 2;
-      el.style.transform = `translateY(${-distance * strength}px)`;
+      el.style.transform = `translate3d(0, ${-distance * strength}px, 0)`;
     };
 
-    onScroll();
+    const onScroll = () => {
+      if (!frameId) frameId = requestAnimationFrame(updatePosition);
+    };
+
+    updatePosition();
     window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      if (frameId) cancelAnimationFrame(frameId);
+    };
   }, [strength]);
 
   return ref;

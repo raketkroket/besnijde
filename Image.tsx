@@ -25,6 +25,8 @@ export function Image({
         src={src}
         alt={alt}
         loading={priority ? 'eager' : 'lazy'}
+        decoding="async"
+        fetchPriority={priority ? 'high' : 'auto'}
         className={`w-full h-full object-cover ${objectPosition} ${imgClassName}`}
       />
     </div>
