@@ -81,6 +81,14 @@ export function Navigation() {
 
             {/* Desktop nav */}
             <div className="hidden lg:flex items-center gap-1">
+              <button
+                onClick={() => handleNav('/')}
+                className={`px-3 py-2 text-sm font-medium transition-colors duration-200 whitespace-nowrap ${
+                  isActive('/') ? 'text-bcn-deep' : 'text-ink hover:text-bcn-deep'
+                }`}
+              >
+                {t('Home', 'Home')}
+              </button>
               {translatedNavLinks.map((link) => (
                 <div
                   key={link.label}
@@ -177,6 +185,14 @@ export function Navigation() {
           <div className="flex-1 overflow-y-auto px-5 py-6 scrollbar-hide">
             {/* Main links */}
             <div className="space-y-0">
+              <button
+                onClick={() => handleNav('/')}
+                className={`block w-full py-4 text-left text-lg font-bold border-b border-bcn-50 ${
+                  isActive('/') ? 'text-bcn-deep' : 'text-ink'
+                }`}
+              >
+                {t('Home', 'Home')}
+              </button>
               {translatedNavLinks.map((link) => (
                 <div key={link.label}>
                   <button
