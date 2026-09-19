@@ -79,7 +79,7 @@ export function Hero() {
           </div>
 
           {/* Image */}
-          <div className="order-2 relative lg:pl-3">
+          <div className="order-2 lg:pl-3">
             <div ref={parallaxRef} className="will-change-transform">
               <ImageReveal>
                 <div className="relative">
@@ -87,17 +87,16 @@ export function Hero() {
                     src={heroImage}
                     alt={t('Arts in gesprek met ouder en kind in een moderne kliniek', 'Doctor speaking with a parent and child in a modern clinic')}
                     aspect="aspect-[16/9] sm:aspect-[3/2] lg:aspect-[4/5]"
-                    rounded="rounded-none"
+                    rounded="rounded-lg"
                     objectPosition="object-center sm:object-[center_32%] lg:object-center"
                     priority
                   />
-                  {/* Info module — desktop only, no overlap on mobile */}
-                  <div className="hidden lg:block absolute bottom-0 -left-8 bg-white border-l-4 border-bcn-blue p-5 max-w-[240px]">
-                    <div className="flex items-center gap-2 mb-1.5">
-                      <div className="w-2 h-2 rounded-full bg-bcn-blue" />
+                  <div className="hidden lg:block absolute bottom-5 left-5 max-w-[240px] rounded-lg border border-white/70 bg-white/95 p-4 shadow-card backdrop-blur-sm">
+                    <div className="mb-1.5 flex items-center gap-2">
+                      <span className="h-2 w-2 rounded-full bg-bcn-blue" />
                       <span className="text-xs font-semibold text-bcn-deep">BCN</span>
                     </div>
-                    <p className="text-sm font-medium text-ink leading-snug">
+                    <p className="text-sm font-medium leading-snug text-ink">
                       {t('9 gespecialiseerde locaties door heel Nederland', '9 specialist locations throughout the Netherlands')}
                     </p>
                   </div>
