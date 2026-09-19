@@ -25,12 +25,6 @@ export function RouterProvider({ children }: { children: ReactNode }) {
     window.scrollTo({ top: 0, behavior: 'instant' });
   }, []);
 
-  useEffect(() => {
-    const onPop = () => setPath(window.location.pathname + window.location.search);
-    window.addEventListener('popstate', onPop);
-    return () => window.removeEventListener('popstate', onPop);
-  }, []);
-
   return (
     <RouterContext.Provider value={{ path, navigate }}>{children}</RouterContext.Provider>
   );

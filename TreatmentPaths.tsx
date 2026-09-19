@@ -2,6 +2,7 @@ import { Reveal, ImageReveal } from '@/components/Reveal';
 import { Image } from '@/components/Image';
 import { ArrowRight } from '@/components/ArrowIcon';
 import { useRouter } from '@/router';
+import boysTreatmentImage from './images/little.png';
 
 const pathways = [
   {
@@ -11,7 +12,7 @@ const pathways = [
     price: '€325',
     priceNote: 'tot 16 jaar',
     href: '/besnijdenis-jongen',
-    image: 'https://images.pexels.com/photos/7653088/pexels-photo-7653088.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: boysTreatmentImage,
     alt: 'Arts in gesprek met moeder en dochter in een moderne kliniek',
   },
   {

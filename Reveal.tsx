@@ -1,4 +1,4 @@
-import { createElement, ReactNode, RefObject } from 'react';
+import { createElement, ReactNode } from 'react';
 import { useReveal } from '@/hooks/useReveal';
 
 interface RevealProps {
@@ -23,10 +23,8 @@ interface ImageRevealProps {
 }
 
 export function ImageReveal({ children, className = '' }: ImageRevealProps) {
-  const { ref, isVisible } = useReveal();
-
   return (
-    <div ref={ref as RefObject<HTMLDivElement>} className={`image-reveal ${isVisible ? 'is-visible' : ''} ${className}`}>
+    <div className={`image-reveal is-visible ${className}`}>
       {children}
     </div>
   );

@@ -6,8 +6,7 @@ import { LinkButton } from '@/components/Button';
 import { boysNavSections, boysTimeline, boysRecoveryCards, boysComplications } from '@/data/treatment';
 import { Plus, Minus, AlertTriangle, Check, Phone, ChevronDown } from 'lucide-react';
 import { companyInfo } from '@/data/site';
-
-const heroImage = 'https://images.pexels.com/photos/7653088/pexels-photo-7653088.jpeg?auto=compress&cs=tinysrgb&w=800';
+import heroImage from './images/little.png';
 
 export function BoysTreatmentPage() {
   const [activeSection, setActiveSection] = useState('over');

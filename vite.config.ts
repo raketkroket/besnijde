@@ -7,7 +7,12 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url)),
+      '@/components/home': fileURLToPath(new URL('./', import.meta.url)),
+      '@/components': fileURLToPath(new URL('./', import.meta.url)),
+      '@/pages': fileURLToPath(new URL('./', import.meta.url)),
+      '@/data': fileURLToPath(new URL('./', import.meta.url)),
+      '@/hooks': fileURLToPath(new URL('./', import.meta.url)),
+      '@': fileURLToPath(new URL('./', import.meta.url)),
     },
   },
   optimizeDeps: {

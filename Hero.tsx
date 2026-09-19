@@ -4,8 +4,7 @@ import { Image } from '@/components/Image';
 import { Reveal, ImageReveal } from '@/components/Reveal';
 import { useParallax } from '@/hooks/useReveal';
 import { heroStats } from '@/data/site';
-
-const heroImage = 'https://images.pexels.com/photos/39192346/pexels-photo-39192346.jpeg?auto=compress&cs=tinysrgb&w=1200';
+import heroImage from './images/p2.jpg';
 
 export function Hero() {
   const parallaxRef = useParallax<HTMLDivElement>(0.03);
@@ -85,13 +84,13 @@ export function Hero() {
                   <Image
                     src={heroImage}
                     alt="Arts in gesprek met ouder en kind in een moderne kliniek"
-                    aspect="aspect-[4/5] sm:aspect-[4/3] lg:aspect-[4/5]"
+                    aspect="aspect-[16/9] sm:aspect-[4/3] lg:aspect-[4/5]"
                     rounded="rounded-xl2"
                     objectPosition="object-center sm:object-top lg:object-center"
                     priority
                   />
                   {/* Info module — desktop only, no overlap on mobile */}
-                  <div className="hidden lg:block absolute -bottom-6 -left-8 bg-white rounded-xl2 shadow-card border border-bcn-100 p-5 max-w-[240px]">
+                  <div className="hidden lg:block absolute bottom-4 left-4 bg-white rounded-xl2 shadow-card border border-bcn-100 p-5 max-w-[240px]">
                     <div className="flex items-center gap-2 mb-1.5">
                       <div className="w-2 h-2 rounded-full bg-bcn-blue" />
                       <span className="text-xs font-semibold text-bcn-deep">BCN</span>
