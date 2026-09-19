@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --mobile-cta-height: 80px;
+  }
+
   html {
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
@@ -24,6 +28,12 @@
     @apply font-bold text-ink;
     font-family: Georgia, 'Times New Roman', serif;
     letter-spacing: 0;
+  }
+
+  @media (max-width: 1023px) {
+    #root {
+      padding-bottom: calc(var(--mobile-cta-height) + env(safe-area-inset-bottom) + 24px);
+    }
   }
 }
 

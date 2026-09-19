@@ -81,7 +81,7 @@ export function BoysTreatmentPage() {
       </section>
 
       {/* Mobile: dropdown TOC. Desktop: horizontal scroll */}
-      <div className="sticky top-[64px] z-30 bg-white border-y border-bcn-100 py-3">
+      <div className="sticky top-[72px] lg:top-[64px] z-30 bg-white border-y border-bcn-100 py-3">
         <div className="mx-auto max-w-8xl px-5 sm:px-6 lg:px-10">
           {/* Mobile dropdown */}
           <div className="lg:hidden relative">
@@ -89,7 +89,7 @@ export function BoysTreatmentPage() {
               onClick={() => setTocOpen(!tocOpen)}
               className="w-full flex items-center justify-between px-4 py-2.5 rounded-lg bg-bcn-ice text-sm font-semibold text-ink"
             >
-              <span>{activeLabel ? treatmentText(boysNavSections.find((s) => s.id === activeSection)!, language).label : t('Op deze pagina', 'On this page')}</span>
+              <span className="min-w-0 truncate">{t('Op deze pagina', 'On this page')}: {activeLabel ? treatmentText(boysNavSections.find((s) => s.id === activeSection)!, language).label : t('Op deze pagina', 'On this page')}</span>
               <ChevronDown size={16} className={`transition-transform ${tocOpen ? 'rotate-180' : ''}`} />
             </button>
             {tocOpen && (
@@ -98,7 +98,7 @@ export function BoysTreatmentPage() {
                   <button
                     key={s.id}
                     onClick={() => scrollTo(s.id)}
-                    className={`block w-full text-left px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
+                    className={`flex min-h-12 w-full items-center rounded-lg px-3 py-2 text-left text-sm font-medium transition-colors ${
                       activeSection === s.id ? 'bg-bcn-blue text-white' : 'text-ink hover:bg-bcn-ice'
                     }`}
                   >
@@ -128,7 +128,7 @@ export function BoysTreatmentPage() {
 
       {/* Content */}
       <div className="bg-white editorial-content">
-        <section id="over" className="editorial-section py-16 lg:py-24 scroll-mt-32">
+        <section id="over" className="editorial-section py-16 lg:py-24 scroll-mt-40 lg:scroll-mt-32">
           <div className="mx-auto max-w-4xl px-5 sm:px-6 lg:px-10">
             <Reveal>
               <h2 className="text-[clamp(1.5rem,4vw,2.25rem)] font-bold text-ink mb-6">{t('Over de behandeling', 'About the treatment')}</h2>
@@ -155,7 +155,7 @@ export function BoysTreatmentPage() {
           </div>
         </section>
 
-        <section id="redenen" className="editorial-section py-16 lg:py-24 bg-bcn-ice scroll-mt-32">
+        <section id="redenen" className="editorial-section py-16 lg:py-24 bg-bcn-ice scroll-mt-40 lg:scroll-mt-32">
           <div className="mx-auto max-w-4xl px-5 sm:px-6 lg:px-10">
             <Reveal>
               <h2 className="text-[clamp(1.5rem,4vw,2.25rem)] font-bold text-ink mb-6">{t('Redenen voor een besnijdenis', 'Reasons for circumcision')}</h2>
@@ -168,28 +168,28 @@ export function BoysTreatmentPage() {
           </div>
         </section>
 
-        <section id="wanneer-niet" className="editorial-section py-16 lg:py-24 scroll-mt-32">
+        <section id="wanneer-niet" className="editorial-section py-16 lg:py-24 scroll-mt-40 lg:scroll-mt-32">
           <div className="mx-auto max-w-4xl px-5 sm:px-6 lg:px-10">
             <Reveal><h2 className="text-[clamp(1.5rem,4vw,2.25rem)] font-bold text-ink mb-6">{t('Wanneer wordt er niet besneden?', 'When is circumcision not performed?')}</h2>
             <p className="text-ink leading-relaxed">{t('Er zijn situaties waarin een besnijdenis niet direct kan worden uitgevoerd, of waarin aanvullend onderzoek nodig is. De arts beoordeelt dit tijdens het consult. Bespreek eventuele medische aandoeningen of medicatie altijd vooraf met de arts.', 'There are situations in which circumcision cannot be performed immediately or additional assessment is needed. The doctor evaluates this during the consultation. Always discuss medical conditions or medication with the doctor in advance.')}</p></Reveal>
           </div>
         </section>
 
-        <section id="leeftijd-angst" className="editorial-section py-16 lg:py-24 bg-bcn-ice scroll-mt-32">
+        <section id="leeftijd-angst" className="editorial-section py-16 lg:py-24 bg-bcn-ice scroll-mt-40 lg:scroll-mt-32">
           <div className="mx-auto max-w-4xl px-5 sm:px-6 lg:px-10">
             <Reveal><h2 className="text-[clamp(1.5rem,4vw,2.25rem)] font-bold text-ink mb-6">{t('Leeftijd & angst', 'Age & anxiety')}</h2>
             <p className="text-ink leading-relaxed">{t('De behandeling wordt aangepast aan de leeftijd van het kind. Bij jongere kinderen wordt extra aandacht besteed aan een rustige sfeer. Als uw zoon erg angstig is, bespreek dit dan vooraf met de arts. De arts heeft ervaring met angstige kinderen en zal de tijd nemen om uw zoon op zijn gemak te stellen.', 'Treatment is adapted to the child\'s age. For younger children, special attention is given to a calm atmosphere. If your son is very anxious, discuss this with the doctor beforehand. The doctor is experienced with anxious children and takes time to put your son at ease.')}</p></Reveal>
           </div>
         </section>
 
-        <section id="toestemming" className="editorial-section py-16 lg:py-24 scroll-mt-32">
+        <section id="toestemming" className="editorial-section py-16 lg:py-24 scroll-mt-40 lg:scroll-mt-32">
           <div className="mx-auto max-w-4xl px-5 sm:px-6 lg:px-10">
             <Reveal><h2 className="text-[clamp(1.5rem,4vw,2.25rem)] font-bold text-ink mb-6">{t('Toestemming', 'Consent')}</h2>
             <p className="text-ink leading-relaxed">{t('Voor een besnijdenis bij minderjarigen is toestemming nodig van de ouders of voogden. Beide ouders met gezag moeten toestemming geven. Dit wordt vastgelegd op het behandelovereenkomst-formulier.', 'Circumcision for minors requires consent from parents or guardians. Both parents with legal authority must give consent. This is recorded on the treatment agreement form.')}</p></Reveal>
           </div>
         </section>
 
-        <section id="genezing" className="editorial-section py-16 lg:py-24 bg-bcn-ice scroll-mt-32">
+        <section id="genezing" className="editorial-section py-16 lg:py-24 bg-bcn-ice scroll-mt-40 lg:scroll-mt-32">
           <div className="mx-auto max-w-4xl px-5 sm:px-6 lg:px-10">
             <Reveal>
               <h2 className="text-[clamp(1.5rem,4vw,2.25rem)] font-bold text-ink mb-4">{t('Genezing', 'Recovery')}</h2>
@@ -208,7 +208,7 @@ export function BoysTreatmentPage() {
           </div>
         </section>
 
-        <section id="mogelijke-problemen" className="editorial-section py-16 lg:py-24 scroll-mt-32">
+        <section id="mogelijke-problemen" className="editorial-section py-16 lg:py-24 scroll-mt-40 lg:scroll-mt-32">
           <div className="mx-auto max-w-4xl px-5 sm:px-6 lg:px-10">
             <Reveal>
               <div className="flex items-center gap-3 mb-4"><AlertTriangle size={22} className="text-amber-500 flex-shrink-0" /><h2 className="text-[clamp(1.5rem,4vw,2.25rem)] font-bold text-ink">{t('Wanneer moet u contact opnemen?', 'When should you contact us?')}</h2></div>
@@ -220,7 +220,7 @@ export function BoysTreatmentPage() {
                       <span className="font-semibold text-ink">{treatmentText(comp, language).title}</span>
                       <span className="flex-shrink-0 w-7 h-7 rounded-full bg-bcn-ice flex items-center justify-center text-bcn-deep">{openComplication === i ? <Minus size={15} /> : <Plus size={15} />}</span>
                     </button>
-                    <div className="overflow-hidden transition-all duration-300" style={{ maxHeight: openComplication === i ? '200px' : '0px' }}>
+                    <div className="overflow-hidden transition-all duration-300" style={{ maxHeight: openComplication === i ? '1000px' : '0px' }}>
                       <p className="px-4 sm:px-5 pb-5 text-ink-muted text-sm leading-relaxed">{treatmentText(comp, language).description}</p>
                     </div>
                   </div>

@@ -103,6 +103,12 @@ export function Hero() {
                 </div>
               </ImageReveal>
             </div>
+            <div className="mt-4 flex items-start gap-3 lg:hidden">
+              <span className="mt-1.5 h-2 w-2 flex-shrink-0 rounded-full bg-bcn-blue" />
+              <p className="text-sm font-medium leading-snug text-ink">
+                {t('9 gespecialiseerde locaties door heel Nederland', '9 specialist locations throughout the Netherlands')}
+              </p>
+            </div>
           </div>
         </div>
       </div>

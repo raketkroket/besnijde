@@ -62,7 +62,7 @@ export function AppointmentPage() {
       </section>
 
       {/* Progress — mobile shows step count */}
-      <section className="sticky top-[64px] z-30 bg-white border-y border-bcn-100 py-3">
+      <section className="sticky top-[72px] lg:top-[64px] z-30 bg-white border-y border-bcn-100 py-3">
         <div className="mx-auto max-w-5xl px-5 sm:px-6 lg:px-10">
           {/* Mobile: step counter */}
           <div className="lg:hidden flex items-center gap-3">

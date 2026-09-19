@@ -66,7 +66,7 @@ export function FaqPage() {
                             {isOpen ? <Minus size={15} /> : <Plus size={15} />}
                           </span>
                         </button>
-                        <div className="overflow-hidden transition-all duration-300" style={{ maxHeight: isOpen ? '300px' : '0px' }}>
+                        <div className="overflow-hidden transition-all duration-300" style={{ maxHeight: isOpen ? '1000px' : '0px' }}>
                           <p className="pb-5 text-ink-muted leading-relaxed pr-12 text-pretty">{item.answer}</p>
                         </div>
                       </div>

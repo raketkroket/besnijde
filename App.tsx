@@ -73,7 +73,6 @@ function App() {
           <main><Routes /></main>
           <Footer />
           <MobileStickyCta />
-          <div className="h-24 lg:hidden" />
         </div>
       </RouterProvider>
     </LanguageProvider>

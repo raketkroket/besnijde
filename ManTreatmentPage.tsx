@@ -89,16 +89,16 @@ export function ManTreatmentPage() {
       </section>
 
       {/* Sticky nav: mobile dropdown / desktop horizontal */}
-      <div className="sticky top-[64px] z-30 bg-white border-y border-bcn-100 py-3">
+      <div className="sticky top-[72px] lg:top-[64px] z-30 bg-white border-y border-bcn-100 py-3">
         <div className="mx-auto max-w-8xl px-5 sm:px-6 lg:px-10">
           <div className="lg:hidden relative">
-            <button onClick={() => setTocOpen(!tocOpen)} className="w-full flex items-center justify-between px-4 py-2.5 rounded-lg bg-bcn-ice text-sm font-semibold text-ink">
-              <span>{activeLabel}</span><ChevronDown size={16} className={`transition-transform ${tocOpen ? 'rotate-180' : ''}`} />
+            <button onClick={() => setTocOpen(!tocOpen)} className="w-full flex items-center justify-between gap-3 px-4 py-2.5 rounded-lg bg-bcn-ice text-sm font-semibold text-ink">
+              <span className="min-w-0 truncate">{t('Op deze pagina', 'On this page')}: {activeLabel}</span><ChevronDown size={16} className={`flex-shrink-0 transition-transform ${tocOpen ? 'rotate-180' : ''}`} />
             </button>
             {tocOpen && (
               <div className="absolute top-full left-0 right-0 mt-1 bg-white rounded-lg shadow-deep border border-bcn-100 p-2 z-10 max-h-[400px] overflow-y-auto">
                 {manNavSections.map((s) => (
-                  <button key={s.id} onClick={() => scrollTo(s.id)} className={`block w-full text-left px-3 py-2.5 rounded-lg text-sm font-medium ${activeSection === s.id ? 'bg-bcn-blue text-white' : 'text-ink hover:bg-bcn-ice'}`}>{s.label}</button>
+                  <button key={s.id} onClick={() => scrollTo(s.id)} className={`flex min-h-12 w-full items-center rounded-lg px-3 py-2 text-left text-sm font-medium ${activeSection === s.id ? 'bg-bcn-blue text-white' : 'text-ink hover:bg-bcn-ice'}`}>{s.label}</button>
                 ))}
               </div>
             )}
@@ -112,7 +112,7 @@ export function ManTreatmentPage() {
       </div>
 
       <div className="bg-white editorial-content">
-        <section id="hoe-gaat" className="editorial-section py-16 lg:py-24 scroll-mt-32">
+        <section id="hoe-gaat" className="editorial-section py-16 lg:py-24 scroll-mt-40 lg:scroll-mt-32">
           <div className="mx-auto max-w-4xl px-5 sm:px-6 lg:px-10">
             <Reveal>
               <h2 className="text-[clamp(1.5rem,4vw,2.25rem)] font-bold text-ink mb-6">{t('Hoe gaat de behandeling?', 'How does treatment work?')}</h2>
@@ -131,7 +131,7 @@ export function ManTreatmentPage() {
         </section>
 
         {sections.map((sec) => (
-          <section key={sec.id} id={sec.id} className={`editorial-section py-16 lg:py-24 scroll-mt-32 ${sec.bg}`}>
+          <section key={sec.id} id={sec.id} className={`editorial-section py-16 lg:py-24 scroll-mt-40 lg:scroll-mt-32 ${sec.bg}`}>
             <div className="mx-auto max-w-4xl px-5 sm:px-6 lg:px-10">
               <Reveal>
                 <h2 className="text-[clamp(1.5rem,4vw,2.25rem)] font-bold text-ink mb-6">{sec.title}</h2>
@@ -142,7 +142,7 @@ export function ManTreatmentPage() {
           </section>
         ))}
 
-        <section id="mogelijke-problemen" className="editorial-section py-16 lg:py-24 scroll-mt-32">
+        <section id="mogelijke-problemen" className="editorial-section py-16 lg:py-24 scroll-mt-40 lg:scroll-mt-32">
           <div className="mx-auto max-w-4xl px-5 sm:px-6 lg:px-10">
             <Reveal>
               <div className="flex items-center gap-3 mb-4"><AlertTriangle size={22} className="text-amber-500 flex-shrink-0" /><h2 className="text-[clamp(1.5rem,4vw,2.25rem)] font-bold text-ink">{t('Wanneer moet u contact opnemen?', 'When should you contact us?')}</h2></div>
@@ -153,7 +153,7 @@ export function ManTreatmentPage() {
                       <span className="font-semibold text-ink">{comp.title}</span>
                       <span className="flex-shrink-0 w-7 h-7 rounded-full bg-bcn-ice flex items-center justify-center text-bcn-deep">{openComplication === i ? <Minus size={15} /> : <Plus size={15} />}</span>
                     </button>
-                    <div className="overflow-hidden transition-all duration-300" style={{ maxHeight: openComplication === i ? '200px' : '0px' }}>
+                    <div className="overflow-hidden transition-all duration-300" style={{ maxHeight: openComplication === i ? '1000px' : '0px' }}>
                       <p className="px-4 sm:px-5 pb-5 text-ink-muted text-sm leading-relaxed">{comp.description}</p>
                     </div>
                   </div>

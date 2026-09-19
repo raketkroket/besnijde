@@ -99,13 +99,13 @@ export function LocationPage({ location }: LocationPageProps) {
                   </div>
                 </a>
 
-                <a href={`mailto:${location.email}`} className="flex items-center gap-4 py-3 group border-t border-bcn-200/50">
+                <a href={`mailto:${location.email}`} className="flex min-w-0 items-center gap-4 py-3 group border-t border-bcn-200/50">
                   <div className="w-10 h-10 rounded-lg bg-white flex items-center justify-center flex-shrink-0">
                     <Mail size={18} className="text-bcn-blue" />
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <div className="text-xs text-ink-muted">{t('Email', 'Email')}</div>
-                    <div className="font-semibold text-ink text-sm group-hover:text-bcn-deep transition-colors">{location.email}</div>
+                    <div className="break-all font-semibold text-ink text-sm group-hover:text-bcn-deep transition-colors">{location.email}</div>
                   </div>
                 </a>
 
@@ -128,14 +128,14 @@ export function LocationPage({ location }: LocationPageProps) {
                 <div className="space-y-2">
                   {nextDates.map((date, i) => (
                     <Reveal key={i}>
-                      <div className="flex items-center justify-between p-4 bg-white border border-bcn-100 rounded-xl2 hover:border-bcn-200 transition-colors group">
-                        <div className="flex items-center gap-4">
+                      <div className="flex flex-col items-start gap-3 p-4 bg-white border border-bcn-100 rounded-xl2 hover:border-bcn-200 transition-colors group sm:flex-row sm:items-center sm:justify-between">
+                        <div className="flex min-w-0 items-center gap-4">
                           <div className="w-10 h-10 rounded-lg bg-bcn-ice flex items-center justify-center">
                             <Calendar size={16} className="text-bcn-deep" />
                           </div>
                           <span className="font-semibold text-ink">{date}</span>
                         </div>
-                        <Link to="/afspraak" className="inline-flex items-center gap-2 text-sm font-semibold text-bcn-deep hover:text-bcn-blue transition-colors">
+                        <Link to="/afspraak" className="inline-flex flex-shrink-0 items-center gap-2 text-sm font-semibold text-bcn-deep hover:text-bcn-blue transition-colors">
                           {t('Aanvragen', 'Request')}
                           <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                         </Link>

@@ -154,7 +154,7 @@ export function Navigation() {
 
       {/* Mobile menu — full screen */}
       <div
-        className={`fixed inset-0 z-[100] lg:hidden transition-opacity duration-300 ${
+        className={`fixed inset-0 z-[100] overflow-x-hidden lg:hidden transition-opacity duration-300 ${
           mobileOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
       >
