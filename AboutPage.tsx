@@ -1,0 +1,156 @@
+import { Reveal } from '@/components/Reveal';
+import { Link } from '@/router';
+import { Stethoscope } from 'lucide-react';
+import { companyInfo } from '@/data/site';
+
+const timeline = [
+  { year: '2001', text: 'Besnijdenis Centrum Amsterdam opgericht door huisartsen Erik Robberse en Lex Klein.' },
+  { year: '2002', text: 'Vestiging Utrecht geopend door huisarts Lex Klein en chirurg Roderick Schmitz.' },
+  { year: '2003', text: 'Vestiging Almere geopend.' },
+  { year: '2005', text: 'Vestiging Haaglanden geopend. Jongensbesnijdenissen worden niet meer vergoed vanuit de basisverzekering.' },
+  { year: '2005–2016', text: 'Uitbreiding naar Arnhem, Breda, Rotterdam, Eindhoven Regio en Maastricht.' },
+  { year: 'Vandaag', text: 'Negen gespecialiseerde locaties, meer dan 90.000 behandelingen sinds 2001.' },
+];
+
+export function AboutPage() {
+  return (
+    <>
+      <section className="pt-[80px] bg-white">
+        <div className="mx-auto max-w-8xl px-6 lg:px-10 py-12 lg:py-20">
+          <Reveal>
+            <nav className="flex items-center gap-2 text-xs text-ink-muted mb-8">
+              <Link to="/" className="hover:text-bcn-deep">Home</Link>
+              <span>/</span>
+              <Link to="/over-bcn" className="text-ink">Over BCN</Link>
+            </nav>
+          </Reveal>
+
+          <Reveal stagger>
+            <span className="text-xs font-semibold uppercase tracking-[0.15em] text-bcn-deep">Over ons</span>
+            <h1 className="mt-4 text-hero text-ink text-balance">Gespecialiseerd sinds 2001.</h1>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Intro */}
+      <section className="py-16 lg:py-24 bg-white">
+        <div className="mx-auto max-w-4xl px-6 lg:px-10">
+          <Reveal>
+            <h2 className="text-h3 text-ink mb-6">Besnijdenis Centrum Nederland</h2>
+            <div className="space-y-4 text-ink leading-relaxed">
+              <p>
+                Besnijdenis Centrum Nederland (BCN) is de oudste en grootste kliniek voor
+                besnijdenissen in Nederland, waar sinds 2001 meer dan 90.000 jongens en mannen
+                zijn besneden. BCN telt 9 gespecialiseerde centra verspreid over Nederland waar
+                ervaren artsen besnijdenissen uitvoeren bij jongens en mannen onder plaatselijke
+                verdoving.
+              </p>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Visie */}
+      <section className="py-16 lg:py-24 bg-bcn-ice">
+        <div className="mx-auto max-w-4xl px-6 lg:px-10">
+          <Reveal>
+            <h2 className="text-h3 text-ink mb-6">Onze visie</h2>
+            <div className="space-y-4 text-ink leading-relaxed">
+              <p>
+                De artsen van Besnijdenis Centrum Nederland verrichten op een zorgvuldige en
+                medisch verantwoorde wijze besnijdenissen bij jongens en mannen. Wij streven naar
+                een optimaal resultaat van onze ingrepen en naar een zo gering mogelijk aantal
+                complicaties. Voor de patiënt moet de ingreep zo min mogelijk belastend zijn,
+                door toepassing van goede verdoving.
+              </p>
+              <p>
+                Wij doen besnijdenissen zowel vanwege medische als religieuze redenen. Wij weten
+                hoe belangrijk en spannend de besnijdenis is voor de ouders van de patiënt en voor
+                de patiënt zelf.
+              </p>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Geschiedenis timeline */}
+      <section className="py-16 lg:py-24 bg-white">
+        <div className="mx-auto max-w-4xl px-6 lg:px-10">
+          <Reveal>
+            <h2 className="text-h3 text-ink mb-10">Onze geschiedenis</h2>
+          </Reveal>
+          <div className="relative pl-8">
+            <div className="absolute left-4 top-2 bottom-2 w-px bg-bcn-200" />
+            <div className="space-y-10">
+              {timeline.map((item) => (
+                <Reveal key={item.year}>
+                  <div className="relative">
+                    <div className="absolute -left-8 top-0.5 w-8 h-8 rounded-full bg-bcn-blue text-white flex items-center justify-center text-[10px] font-bold">
+                      {item.year === 'Vandaag' ? '★' : item.year.slice(-2)}
+                    </div>
+                    <div className="font-bold text-bcn-deep text-sm mb-1">{item.year}</div>
+                    <p className="text-ink-muted leading-relaxed">{item.text}</p>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Artsen */}
+      <section className="py-16 lg:py-24 bg-bcn-ice">
+        <div className="mx-auto max-w-4xl px-6 lg:px-10">
+          <Reveal>
+            <h2 className="text-h3 text-ink mb-6">Onze artsen & assistenten</h2>
+            <p className="text-ink leading-relaxed mb-8">
+              BCN-artsen hebben relevante medische en chirurgische achtergronden en ontvangen
+              interne training. Zij werken op vaste vestigingen en zijn ervaren in het uitvoeren
+              van besnijdenissen bij jongens en mannen.
+            </p>
+            <div className="grid sm:grid-cols-2 gap-4">
+              <div className="bg-white p-6 rounded-xl2">
+                <div className="w-12 h-12 rounded-full bg-bcn-ice flex items-center justify-center mb-3">
+                  <Stethoscope size={20} className="text-bcn-deep" />
+                </div>
+                <h3 className="font-bold text-ink mb-1">Medische achtergrond</h3>
+                <p className="text-sm text-ink-muted">Artsen met relevante medische en chirurgische ervaring.</p>
+              </div>
+              <div className="bg-white p-6 rounded-xl2">
+                <div className="w-12 h-12 rounded-full bg-bcn-ice flex items-center justify-center mb-3">
+                  <Stethoscope size={20} className="text-bcn-deep" />
+                </div>
+                <h3 className="font-bold text-ink mb-1">Interne training</h3>
+                <p className="text-sm text-ink-muted">Specifieke BCN-training en protocollen.</p>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Resultaten */}
+      <section className="py-16 lg:py-24 bg-white">
+        <div className="mx-auto max-w-4xl px-6 lg:px-10">
+          <Reveal>
+            <h2 className="text-h3 text-ink mb-6">Onze resultaten</h2>
+            <p className="text-ink leading-relaxed mb-8">
+              De hoge beoordelingen die wij ontvangen &mdash; een gemiddelde van {companyInfo.patientRating} bij
+              patiënten en {companyInfo.googleRating} sterren op Google &mdash; tonen aan dat wij zeer goede
+              zorg leveren.
+            </p>
+            <div className="grid grid-cols-2 gap-4">
+              <div className="p-6 bg-bcn-ice rounded-xl2 text-center">
+                <div className="text-4xl font-bold text-bcn-deep">{companyInfo.googleRating}★</div>
+                <div className="text-sm text-ink-muted mt-1">Google beoordeling</div>
+              </div>
+              <div className="p-6 bg-bcn-ice rounded-xl2 text-center">
+                <div className="text-4xl font-bold text-bcn-deep">{companyInfo.patientRating}</div>
+                <div className="text-sm text-ink-muted mt-1">Patiëntbeoordeling</div>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+    </>
+  );
+}
